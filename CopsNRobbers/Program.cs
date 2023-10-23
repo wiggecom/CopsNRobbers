@@ -19,11 +19,8 @@
             {
                 Console.SetWindowSize((cityWidth + 40), (cityHeight + 15));
             }
-            
-            //int cityLeft = 10;
-            //int cityTop = 5;
+
             int cityLeftStartCentered = (Console.WindowWidth / 2) - (cityWidth / 2);
-            //int cityTopStartCentered = 8; // start at row 8 instead of centered
             int cityTopStartCentered = (Console.WindowHeight / 2) - (cityHeight / 2);
             Gfx.DrawSinCity(cityTopStartCentered);
             City sinCity = new City(cityWidth, cityHeight, cityDepth);
