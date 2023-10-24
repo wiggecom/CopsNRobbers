@@ -17,6 +17,7 @@ namespace CopsNRobbers
         public int Left { get; set; }
         public int Top { get; set; }
         public string[,,] CityArray { get; set; }
+        //private List<Person> people = new List<Person>();
 
         public City(int width, int heigth, int depth)
         {
@@ -36,7 +37,7 @@ namespace CopsNRobbers
         {
             string[,,] cityArray = new string[city.Height, city.Width, city.Depth];
             return cityArray;
-           
+
         }
 
         public string[,,] FillCity(string[,,] cityMap)

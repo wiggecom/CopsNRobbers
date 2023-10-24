@@ -27,34 +27,21 @@ namespace CopsNRobbers
         //    IsArrested = false;
         //}
 
-    public void Robbery(Citizen citizen)
-        {
-            Random random = new();
-            int removeAtIndex = random.Next(citizen.Belongings.Count - 1);
-
-            // Lägg till det valda föremålet i tjuvens "stolen" lista (tjuven stjäl föremålet).
-            Stolen.Add(citizen.Belongings[removeAtIndex]);
-
-            // Ta bort det stulna föremålet från medborgarens "Belongings" lista (medborgaren förlorar föremålet).
-            citizen.Belongings.RemoveAt(removeAtIndex);
-        }
-
-        public override string CollidesWith(Person person, Random rnd)
-        {
-            if (person is Citizen && person.Inventory.Count > 0)
-            {
-                int index = rnd.Next(person.Inventory.Count);
-                Inventory.Add(person.Inventory[index]);
-                person.Inventory.RemoveAt(index);
-                return Message.Robbery;
-            }
-            if (person is Police && person.Inventory.Count > 0)
-            {
-                person.Inventory.AddRange(Inventory);
-                Inventory.Clear();
-                return Message.Arrest;
-            }
-            return null;
-        }
+        //public string CollidesWith(Person person, Random rnd)
+        //{
+        //if (person is Citizen && person.Inventory.Count > 0)
+        //{
+        //int index = rnd.Next(person.Inventory.Count);
+        //Inventory.Add(person.Inventory[index]);
+        //person.Inventory.RemoveAt(index);
+        //return Message.Robbery;
+        //}
+        //if (person is Police && person.Inventory.Count > 0)
+        //{
+        //person.Inventory.AddRange(Inventory);
+        //Inventory.Clear();
+        //return Message.Arrest;
+        //}
+        //return null;
     }
 }

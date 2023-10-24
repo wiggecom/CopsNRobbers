@@ -27,7 +27,7 @@ namespace CopsNRobbers
         }
 
 
-        public override string CollidesWith(Person person, Random rnd)
+        /*public string CollidesWith(Person person, Random rnd)
         {
             if (person is Thief && Inventory.Count > 0)
             {
@@ -38,7 +38,7 @@ namespace CopsNRobbers
             }
 
             return null;
-        }
+        }*/
     }
 
 }
