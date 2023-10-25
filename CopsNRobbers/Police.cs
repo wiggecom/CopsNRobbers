@@ -8,10 +8,10 @@ namespace CopsNRobbers
 {
     public class Police : Person
     {
-        public override char Symbol => 'P';
+        public override string Symbol => "P";
         public List<string> Confiscated { get; set; }
 
-        public Police()
+        public Police(int xPos, int yPos, int dPos, string direction, string name) : base(xPos, yPos, dPos, direction, name)
         {
             Confiscated = new List<string>();
         }

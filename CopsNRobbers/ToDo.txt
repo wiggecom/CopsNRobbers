@@ -1,0 +1,9 @@
+﻿Randomizer, skapa karaktärer (med roliga namn och / eller epitet)
+
+Kontroll - person mot listan,   samma x & y koordinater   !=   samma namn!
+
+prop strength, om två tjuvar kolliderar && differansen av styrka är större än 50 blir den svaga rånad
+
+
+
+ny lista - kopia av första

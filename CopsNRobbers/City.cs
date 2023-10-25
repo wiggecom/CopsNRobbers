@@ -53,15 +53,55 @@ namespace CopsNRobbers
                         //string xString = Convert.ToString(xInt);                                      //
                         //cityMap[heightIndex, widthIndex, depthIndex] = xString;                       //
                         //// -----------------------------------------------------------------------------
-                        cityMap[heightIndex, widthIndex, depthIndex] = "";    // nothing
+                        cityMap[heightIndex, widthIndex, depthIndex] = " ";    // nothing
                     }
                     xInt++;
                 }
             }
             return cityMap;
         }
+        public static void DrawCityFrame(string[,,] cityMap, int cityHeight, int cityWidth, int cityDepth) // To Bottom Layer
+        {
+            int leftStart = (Console.WindowWidth / 2) - (cityWidth / 2);
+            int topStart = (Console.WindowHeight / 2) - (cityHeight / 2);
+            int putLayer = cityMap.GetLength(2)-1; // Bottom Layer
+            for (int i = 0; i < cityWidth; i++)
+            {
+                cityMap[0,i,putLayer] = "▒";
+                //Console.SetCursorPosition(leftStart -1 + i, 0);
+                //Console.Write("▒");
+            }
+            //for (int i = 0; i < cityHeight + 1; i++)
+            //{
+            //    Console.SetCursorPosition(0, i);
+            //    Console.WriteLine("▒");
+            //}
+
+            //for (int i = 0; i < cityHeight + 1; i++)
+            //{
+            //    Console.SetCursorPosition(leftStart + cityWidth + 1, i);
+            //    Console.Write("▒");
+            //}
+            //for (int i = 0; i < cityHeight; i++)
+            //{
+            //    cityMap[i, 0, putLayer] = "▒";
+            //    //Console.SetCursorPosition(leftStart -1 + i, 0);
+            //    //Console.Write("▒");
+            //}
+
+            //for (int i = 0; i < cityWidth; i++)
+            //{
+            //    cityMap[cityHeight, i, putLayer] = "▒";
+            //    //Console.SetCursorPosition(leftStart -1 + i, 0);
+            //    //Console.Write("▒");
+            //}
+
+        }
         public void DrawCity(string[,,] cityMap, int posLeft, int posTop)
         {
+            //cityMap[1, 1, 5] = "O";
+            //cityMap[2, 3, 3] = "X";
+            //cityMap[5, 5, 2] = "O";
             int posLeftReset = posLeft;
             int posTopReset = posTop;
             for (int depthIndex = Depth - 1; depthIndex >= 0; depthIndex--)
@@ -80,13 +120,24 @@ namespace CopsNRobbers
                         //    //Console.Write(".");
                         //}
                         //Console.Write(cityMap[heightIndex, widthIndex,depthIndex].Remove(1));
-                        Console.Write(depthIndex);
+                        //Console.Write(depthIndex);
+
+                        if (cityMap[heightIndex, widthIndex, depthIndex] != " ")
+                        {
+                            Console.SetCursorPosition(widthIndex+posLeftReset, heightIndex + posTopReset);
+                            //Console.Write(depthIndex);
+                            Console.ForegroundColor = (ConsoleColor)depthIndex+1;
+                            Console.Write(cityMap[heightIndex, widthIndex, depthIndex]);
+                        }
+
                     }
                     Console.WriteLine();
                     posTop++;
                 }
-                Console.ReadKey();
+                //Console.ReadKey();
             }
         }
     }
 }
+
+

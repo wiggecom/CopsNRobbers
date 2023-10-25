@@ -9,10 +9,10 @@ namespace CopsNRobbers
 
     public class Citizen : Person
     {
-        public override char Symbol => 'C';
+        public override string Symbol => "☻";
         public List<string> Belongings { get; set; }
 
-        public Citizen()
+        public Citizen(int xPos, int yPos, int dPos, string direction, string name) : base(xPos,yPos,dPos,direction,name)
         {
             Belongings = new List<string>();
             Belongings.Add("Mobile phone");

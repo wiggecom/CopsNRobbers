@@ -8,12 +8,12 @@ namespace CopsNRobbers
 {
     public class Thief : Person
     {
-        public override char Symbol => 'T';
+        public override string Symbol => "T";
         public List<string> Stolen { get; set; }
         public bool IsArrested { get; set; }
 
 
-        public Thief()
+        public Thief(int xPos, int yPos, int dPos, string direction, string name) : base(xPos, yPos, dPos, direction, name)
         {
             {
                 Stolen = new List<string>();
