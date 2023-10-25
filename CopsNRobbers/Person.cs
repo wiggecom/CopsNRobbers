@@ -30,6 +30,22 @@ namespace CopsNRobbers
             //Inventory = new List<string>();
 
         }
+        
+        public static string[,,] CheckCollision(string[,,] cityMap, Person person)
+        {
+                if (cityMap[person.YPos, person.XPos, 1] != " ")
+                {
+                    // Met robber
+                }
+
+                if (cityMap[person.YPos, person.XPos, 0] != " ")
+                {
+                    // Met police
+                }
+
+
+            return cityMap;
+        }
         public static string[,,] MovePeeps(string[,,] cityMap, List<Person> personsList)
         {
             int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
@@ -37,6 +53,13 @@ namespace CopsNRobbers
             foreach (Citizen person in personsList.OfType<Citizen>())
             {
                 cityMap = MoveDirection(cityMap, person);
+                // -------------------------
+
+
+                // CheckCollision(cityMap,person,personsList)
+
+
+                // --------------------
             }
             //foreach (Thief person in personsList.OfType<Thief>())
             //{
@@ -50,15 +73,6 @@ namespace CopsNRobbers
             //    Console.Write("+");
             //}
 
-
-
-
-
-
-
-
-
-
             /*
              * xPos, yPos, dPos, directionX, directionY, name
              * 
@@ -71,7 +85,7 @@ namespace CopsNRobbers
             Police police01 = new Police(7, 2, 0, 1, 1, "Greger the Cop");
             cityMap[police01.YPos, police01.XPos, police01.DPos] = police01.Symbol;
              */
-            
+
 
             return cityMap;
         }
@@ -93,6 +107,7 @@ namespace CopsNRobbers
                         cityMap[person.YPos, person.XPos, person.DPos] = person.Symbol;
                         Console.SetCursorPosition(person.XPos + leftStartCentered, person.YPos + topStartCentered);
                         Console.Write(person.Symbol);
+
                         okDir = false;
                     }
                     else
