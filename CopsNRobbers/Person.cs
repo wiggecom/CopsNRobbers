@@ -30,18 +30,18 @@ namespace CopsNRobbers
             //Inventory = new List<string>();
 
         }
-        
+
         public static string[,,] CheckCollision(string[,,] cityMap, Person person)
         {
-                if (cityMap[person.YPos, person.XPos, 1] != " ")
-                {
-                    // Met robber
-                }
+            if (cityMap[person.YPos, person.XPos, 1] != " ")
+            {
+                // Met robber
+            }
 
-                if (cityMap[person.YPos, person.XPos, 0] != " ")
-                {
-                    // Met police
-                }
+            if (cityMap[person.YPos, person.XPos, 0] != " ")
+            {
+                // Met police
+            }
 
 
             return cityMap;
@@ -91,6 +91,23 @@ namespace CopsNRobbers
         }
         public static string[,,] MoveDirection(string[,,] cityMap, Person person)
         {
+            int[] professionColor = new int[3];
+            professionColor[0] = 3;  // DarkCyan - Police
+            professionColor[1] = 12; // Red      - Thief
+            professionColor[2] = 10; // Green   - Citizen
+            switch (person.DPos)
+            {
+                case 0:
+                    Console.ForegroundColor = (ConsoleColor)professionColor[0];
+                    break;
+                case 1:
+                    Console.ForegroundColor = (ConsoleColor)professionColor[1];
+                    break;
+                case 2:
+                    Console.ForegroundColor = (ConsoleColor)professionColor[2];
+                    break;
+            }
+
             bool okDir = false;
             int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
             int topStartCentered = (Console.WindowHeight / 2) - (cityMap.GetLength(0) / 2);
@@ -101,7 +118,7 @@ namespace CopsNRobbers
                     if (okDir == true)
                     {
                         cityMap[person.YPos, person.XPos, person.DPos] = " ";
-                        Console.SetCursorPosition(person.XPos+leftStartCentered, person.YPos+topStartCentered);
+                        Console.SetCursorPosition(person.XPos + leftStartCentered, person.YPos + topStartCentered);
                         Console.Write(" ");
                         person.YPos--;
                         cityMap[person.YPos, person.XPos, person.DPos] = person.Symbol;
@@ -114,7 +131,7 @@ namespace CopsNRobbers
                     {
                         ChangeDirection(cityMap, person);
                     }
-                    break;
+                    break; // OK
                 case "S":
                     okDir = CheckDirection(cityMap, person, okDir);
                     if (okDir == true)
@@ -125,6 +142,7 @@ namespace CopsNRobbers
                         person.YPos++;
                         cityMap[person.YPos, person.XPos, person.DPos] = person.Symbol;
                         Console.SetCursorPosition(person.XPos + leftStartCentered, person.YPos + topStartCentered);
+
                         Console.Write(person.Symbol);
                         okDir = false;
                     }
@@ -132,12 +150,45 @@ namespace CopsNRobbers
                     {
                         ChangeDirection(cityMap, person);
                     }
-                    break;
-                case "E":
+                    break; // OK
+                case "E": 
+                    okDir = CheckDirection(cityMap, person, okDir);
+                    if (okDir == true)
+                    {
+                        cityMap[person.YPos, person.XPos, person.DPos] = " ";
+                        Console.SetCursorPosition(person.XPos + leftStartCentered, person.YPos + topStartCentered);
+                        Console.Write(" ");
+                        person.XPos++;
+                        cityMap[person.YPos, person.XPos, person.DPos] = person.Symbol;
+                        Console.SetCursorPosition(person.XPos + leftStartCentered, person.YPos + topStartCentered);
+                        Console.Write(person.Symbol);
+                        okDir = false;
+                    }
+                    else
+                    {
+                        // ChangeDirection(cityMap, person);
+                    }
                     break;
                 case "W":
-                    break;
+                    okDir = CheckDirection(cityMap, person, okDir);
+                    if (okDir == true)
+                    {
+                        cityMap[person.YPos, person.XPos, person.DPos] = " ";
+                        Console.SetCursorPosition(person.XPos + leftStartCentered, person.YPos + topStartCentered);
+                        Console.Write(" ");
+                        person.XPos--;
+                        cityMap[person.YPos, person.XPos, person.DPos] = person.Symbol;
+                        Console.SetCursorPosition(person.XPos + leftStartCentered, person.YPos + topStartCentered);
 
+                        Console.Write(person.Symbol);
+                        okDir = false;
+                    }
+                    else
+                    {
+                        ChangeDirection(cityMap, person);
+                    }
+                    break; //OK
+                // ------------------------------ DIAGONALS START ----------------------------
                 case "NE":
                     break;
                 case "SE":
@@ -146,9 +197,9 @@ namespace CopsNRobbers
                     break;
                 case "SW":
                     break;
+                // ------------------------------ DIAGONALS END ------------------------------
 
-
-                default: 
+                default:
                     break;
             }
             return cityMap;
@@ -168,11 +219,11 @@ namespace CopsNRobbers
                     else
                     {
 
-                        okDir=false;
+                        okDir = false;
                     }
-                    break;
+                    break; // OK
                 case "S":
-                    if (person.YPos <= cityMap.GetLength(0)-2)
+                    if (person.YPos <= cityMap.GetLength(0) - 2)
                     {
                         if (cityMap[person.YPos + 1, person.XPos, cityMap.GetLength(2) - 1] == " ")
                         {
@@ -183,11 +234,33 @@ namespace CopsNRobbers
                     {
                         okDir = false;
                     }
-                    break;
+                    break; // OK
                 case "E":
+                    if (person.XPos <= cityMap.GetLength(1) - 2)
+                    {
+                        if (cityMap[person.YPos, person.XPos + 1, cityMap.GetLength(2) - 1] == " ")
+                        {
+                            okDir = true;
+                        }
+                    }
+                    else
+                    {
+                        okDir = false;
+                    }
                     break;
                 case "W":
-                    break;
+                    if (person.XPos >= 1)
+                    {
+                        if (cityMap[person.YPos, person.XPos - 1, cityMap.GetLength(2) - 1] == " ")
+                        {
+                            okDir = true;
+                        }
+                    }
+                    else
+                    {
+                        okDir = false;
+                    }
+                    break; // OK
 
                 case "NE":
                     break;

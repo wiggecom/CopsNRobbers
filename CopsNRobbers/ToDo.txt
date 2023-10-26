@@ -7,3 +7,4 @@ prop strength, om två tjuvar kolliderar && differansen av styrka är större ä
 
 
 ny lista - kopia av första
+w
