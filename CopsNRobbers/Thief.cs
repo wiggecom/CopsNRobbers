@@ -8,7 +8,7 @@ namespace CopsNRobbers
 {
     public class Thief : Person
     {
-        public override string Symbol => "T";
+        public override string Symbol => "☺";
         public List<string> Stolen { get; set; }
         public bool IsArrested { get; set; }
 

@@ -8,7 +8,7 @@ namespace CopsNRobbers
 {
     public class Police : Person
     {
-        public override string Symbol => "P";
+        public override string Symbol => "☺";
         public List<string> Confiscated { get; set; }
 
         public Police(int xPos, int yPos, int dPos, string direction, string name) : base(xPos, yPos, dPos, direction, name)
