@@ -71,22 +71,22 @@ namespace CopsNRobbers
             };
             List<Person> personsList = new List<Person>();
             // ---------- Create Peeps BEGIN -----------------
-            Citizen citizen01 = new Citizen(33, 14, 2, "E", "Greger-Dude");
+            Citizen citizen01 = new Citizen(46, 2, 2, "E", "Greger-Dude");
             cityMap[citizen01.YPos, citizen01.XPos, citizen01.DPos] = citizen01.Symbol;
-            Citizen citizen02 = new Citizen(38, 8, 2, "N", "Greger-Bro");
+            Citizen citizen02 = new Citizen(47, 13, 2, "N", "Greger-Bro");
             cityMap[citizen02.YPos, citizen02.XPos, citizen02.DPos] = citizen02.Symbol;
-            Citizen citizen03 = new Citizen(55, 6, 2, "S", "Greger the Citizen");
+            Citizen citizen03 = new Citizen(51, 4, 2, "S", "Greger the Citizen");
             cityMap[citizen03.YPos, citizen03.XPos, citizen03.DPos] = citizen03.Symbol;
-            Citizen citizen04 = new Citizen(42, 10, 2, "W", "Greger-Bro 2");
+            Citizen citizen04 = new Citizen(54, 15, 2, "W", "Greger-Bro 2");
             cityMap[citizen04.YPos, citizen04.XPos, citizen04.DPos] = citizen04.Symbol;
 
-            Citizen citizen05 = new Citizen(50, 7, 2, "NE", "Greger the Citizen Jr");
+            Citizen citizen05 = new Citizen(57, 6, 2, "NE", "Greger the Citizen Jr");
             cityMap[citizen05.YPos, citizen05.XPos, citizen05.DPos] = citizen05.Symbol;
-            Citizen citizen06 = new Citizen(58, 15, 2, "SE", "Greger the Citizen Jr");
+            Citizen citizen06 = new Citizen(60, 10, 2, "SE", "Greger the Citizen Jr");
             cityMap[citizen06.YPos, citizen06.XPos, citizen06.DPos] = citizen06.Symbol;
-            Citizen citizen07 = new Citizen(29, 9, 2, "NW", "Greger the Citizen Jr");
+            Citizen citizen07 = new Citizen(65, 8, 2, "NW", "Greger the Citizen Jr");
             cityMap[citizen07.YPos, citizen07.XPos, citizen07.DPos] = citizen07.Symbol;
-            Citizen citizen08 = new Citizen(33, 10, 2, "SW", "Greger the Citizen Jr");
+            Citizen citizen08 = new Citizen(70, 19, 2, "SW", "Greger the Citizen Jr");
             cityMap[citizen08.YPos, citizen08.XPos, citizen08.DPos] = citizen08.Symbol;
 
             Thief thief01 = new Thief(32, 4, 1, "E", "Tjyv-Greger");
@@ -112,7 +112,6 @@ namespace CopsNRobbers
             while (true)
             {
                 cityMap = Person.MovePeeps(cityMap, personsList);
-
                 // ------------------------------------------------------------------------------ START REDRAW LOOP
                 if (i == 9)
                 {
@@ -124,7 +123,7 @@ namespace CopsNRobbers
                     i++;
                 }
                 // ------------------------------------------------------------------------------- END REDRAW LOOP
-                Thread.Sleep(100);
+                Thread.Sleep(10);
             }
         }
     }
