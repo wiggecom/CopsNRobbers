@@ -16,6 +16,7 @@ namespace CopsNRobbers
         public int Depth { get; set; }
         public int Left { get; set; }
         public int Top { get; set; }
+        public bool pacMan { get; set; } = false;
         public string[,,] CityArray { get; set; }
         //private List<Person> people = new List<Person>();
 
@@ -167,7 +168,7 @@ namespace CopsNRobbers
             string mapLayer24 = ""; // 24
             string mapLayer25 = ""; // 25
             string mapLayer26 = ""; // 26
-            int cityFilled = 2;
+            int cityFilled = 1;
 
             if (cityFilled == 0)
             {
@@ -201,11 +202,11 @@ namespace CopsNRobbers
             }
             if (cityFilled == 1)
             {
-                mapLayer00 = "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"; // 00
-                mapLayer01 = "▒                                          ▒POLICE-STATION▒                                          ▒"; // 01
-                mapLayer02 = "▒                                          ▒ ▒▒▒▒    ▒▒▒▒ ▒                                          ▒"; // 02
-                mapLayer03 = "▒                                          ▒  ▒▒      ▒▒  ▒                                          ▒"; // 03
-                mapLayer04 = "▒        ▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒            ▒ ▒▒▒▒    ▒▒▒▒ ▒            ▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒        ▒"; // 04
+                mapLayer00 = "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒POLICE-STATION▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"; // 00
+                mapLayer01 = "▒                                          ▒              ▒                                          ▒"; // 01
+                mapLayer02 = "▒                                          ▒              ▒                                          ▒"; // 02
+                mapLayer03 = "▒                                          ▒              ▒                                          ▒"; // 03
+                mapLayer04 = "▒        ▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒            ▒              ▒            ▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒        ▒"; // 04
                 mapLayer05 = "▒        ▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒            ▒▒▒▒▒▒▒--▒▒▒▒▒▒▒            ▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒        ▒"; // 05
                 mapLayer06 = "▒        ▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒                                        ▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒        ▒"; // 06
                 mapLayer07 = "▒        ▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒                                        ▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒        ▒"; // 07
@@ -336,18 +337,6 @@ namespace CopsNRobbers
             "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"  // 24
             */
 
-
-
-            //for (int i = 0; i < mapSizeX - 1; i++)
-            //{
-            //    cityArray[0, i, mapDepth - 1] = "▓"; // mapDepth - 1?
-            //    cityArray[mapSizeY - 1, i, mapDepth - 1] = "▓"; // mapDepth - 1?
-            //}
-            //for (int i = 0; i < mapSizeY - 1; i++)
-            //{
-            //    cityArray[i, 0, mapDepth - 1] = "▓"; // mapDepth - 1?
-            //    cityArray[i, mapSizeX - 1, mapDepth - 1] = "▓"; // mapDepth - 1?
-            //}
 
             return cityArray;
         } // toggle cityFilled to fill or clear map

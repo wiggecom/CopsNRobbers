@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,50 +47,27 @@ namespace CopsNRobbers
 
             return cityMap;
         }
-        public static string[,,] MovePeeps(string[,,] cityMap, List<Person> personsList)
+        public static string[,,] MovePeeps(string[,,] cityMap, List<Person> personsList, bool pacMan)
         {
             int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
             int topStartCentered = (Console.WindowHeight / 2) - (cityMap.GetLength(0) / 2);
             foreach (Citizen person in personsList.OfType<Citizen>())
             {
-                cityMap = MoveDirection(cityMap, person);
-                // -------------------------
+                cityMap = MoveDirection(cityMap, person, pacMan);
 
-
-                // CheckCollision(cityMap,person,personsList)
-
-
-                // --------------------
             }
-            //foreach (Thief person in personsList.OfType<Thief>())
-            //{
-            //    //foreach (Class1 c1 in AList.OfType<Class1>()) { }
-            //    Console.SetCursorPosition(person.XPos + leftStartCentered, person.YPos - 1 + topStartCentered);
-            //    Console.Write("#");
-            //}
-            //foreach (Police person in personsList.OfType<Police>())
-            //{
-            //    Console.SetCursorPosition(person.XPos + leftStartCentered, person.YPos - 1 + topStartCentered);
-            //    Console.Write("+");
-            //}
-
-            /*
-             * xPos, yPos, dPos, directionX, directionY, name
-             * 
-            Citizen citizen01 = new Citizen(5, 5, 2, 1, 1, "Greger-Dude");
-            cityMap[citizen01.YPos, citizen01.XPos, citizen01.DPos] = citizen01.Symbol;
-
-            Thief thief01 = new Thief(3, 4, 1, 2, 0, "Tjyv-Greger");
-            cityMap[thief01.YPos, thief01.XPos, thief01.DPos] = thief01.Symbol;
-
-            Police police01 = new Police(7, 2, 0, 1, 1, "Greger the Cop");
-            cityMap[police01.YPos, police01.XPos, police01.DPos] = police01.Symbol;
-             */
-
+            foreach (Thief person in personsList.OfType<Thief>())
+            {
+                cityMap = MoveDirection(cityMap, person, pacMan);
+            }
+            foreach (Police person in personsList.OfType<Police>())
+            {
+                cityMap = MoveDirection(cityMap, person, pacMan);
+            }
 
             return cityMap;
         }
-        public static string[,,] MoveDirection(string[,,] cityMap, Person person)
+        public static string[,,] MoveDirection(string[,,] cityMap, Person person, bool pacMan)
         {
             int[] professionColor = new int[3];
             professionColor[0] = 3;  // DarkCyan - Police
@@ -125,7 +103,7 @@ namespace CopsNRobbers
                     else
                     {
                         ClearPerson(cityMap, person);
-                        ChangeDirection(cityMap, person);
+                        ChangeDirection(cityMap, person, pacMan);
                         PlacePerson(cityMap, person);
                     }
                     break; // OK
@@ -141,7 +119,7 @@ namespace CopsNRobbers
                     else
                     {
                         ClearPerson(cityMap, person);
-                        ChangeDirection(cityMap, person);
+                        ChangeDirection(cityMap, person, pacMan);
                         PlacePerson(cityMap, person);
                     }
                     break; // OK
@@ -157,7 +135,7 @@ namespace CopsNRobbers
                     else
                     {
                         ClearPerson(cityMap, person);
-                        ChangeDirection(cityMap, person);
+                        ChangeDirection(cityMap, person, pacMan);
                         PlacePerson(cityMap, person);
                     }
                     break; // OK
@@ -173,7 +151,7 @@ namespace CopsNRobbers
                     else
                     {
                         ClearPerson(cityMap, person);
-                        ChangeDirection(cityMap, person);
+                        ChangeDirection(cityMap, person, pacMan);
                         PlacePerson(cityMap, person);
                     }
                     break; // OK
@@ -193,7 +171,7 @@ namespace CopsNRobbers
                     else
                     {
                         ClearPerson(cityMap, person);
-                        ChangeDirection(cityMap, person);
+                        ChangeDirection(cityMap, person, pacMan);
                         PlacePerson(cityMap, person);
                     }
                     break; // OK
@@ -211,7 +189,7 @@ namespace CopsNRobbers
                     else
                     {
                         ClearPerson(cityMap, person);
-                        ChangeDirection(cityMap, person);
+                        ChangeDirection(cityMap, person, pacMan);
                         PlacePerson(cityMap, person);
                     }
                     break; // OK
@@ -229,7 +207,7 @@ namespace CopsNRobbers
                     else
                     {
                         ClearPerson(cityMap, person);
-                        ChangeDirection(cityMap, person);
+                        ChangeDirection(cityMap, person, pacMan);
                         PlacePerson(cityMap, person);
                     }
                     break; // OK
@@ -248,7 +226,7 @@ namespace CopsNRobbers
                     else
                     {
                         ClearPerson(cityMap, person);
-                        ChangeDirection(cityMap, person);
+                        ChangeDirection(cityMap, person, pacMan);
                         PlacePerson(cityMap, person);
 
                     }
@@ -370,7 +348,7 @@ namespace CopsNRobbers
             return okDir;
         }
         public static bool CheckDirectionBackupOnlyBoundary(string[,,] cityMap, Person person, bool okDir)
-            {
+        {
             //    switch (person.Direction)
             //    {
             //        case "N":
@@ -462,90 +440,334 @@ namespace CopsNRobbers
             //    }
             return okDir;
         }
-            public static string[,,] ChangeDirection(string[,,] cityMap, Person person)
+        public static string[,,] ChangeDirection(string[,,] cityMap, Person person, bool pacMan)
         {
-            bool pacMan = false; // Toggle to switch between Pac Man-style portal and Bounce
+            //bool pacMan = true;
             int z = cityMap.GetLength(2) - 1;
             int x = person.XPos;
             int y = person.YPos;
             string[,] surroundings = new string[3, 3];
-            Console.SetCursorPosition(50, 1);
-            Console.Write("X: " + x + "   Y: " + y + "   Z: " + z);
-            //surroundings[0, 0] = cityMap[x - 1, y - 1, z];
-            //surroundings[0, 1] = cityMap[x    , y - 1, z];
-            //surroundings[0, 2] = cityMap[x + 1, y - 1, z];
 
-            //surroundings[1, 0] = cityMap[x - 1, y    , z];
-            //surroundings[1, 1] =                            " "; // person position
-            //surroundings[1, 2] = cityMap[x + 1, y    , z];
+            surroundings[0, 0] = cityMap[y - 1, x - 1, z];
+            surroundings[0, 1] = cityMap[y - 1, x, z];
+            surroundings[0, 2] = cityMap[y - 1, x + 1, z];
 
-            //surroundings[2, 0] = cityMap[x - 1, y + 1, z];
-            //surroundings[2, 1] = cityMap[x    , y + 1, z];
-            //surroundings[2, 2] = cityMap[x + 1, y + 1, z];
+            surroundings[1, 0] = cityMap[y, x - 1, z];
+            surroundings[1, 2] = cityMap[y, x + 1, z];
 
-            int teleportDown = cityMap.GetLength(0) - 2;
-            int teleportUp = 1;
-            int teleportLeft = 1; 
-            int teleportRight = cityMap.GetLength(1) - 2;
+            surroundings[2, 1] = cityMap[y + 1, x, z];
+            surroundings[2, 2] = cityMap[y + 1, x + 1, z];
+            surroundings[2, 0] = cityMap[y + 1, x - 1, z];
+
+            surroundings[1, 1] = " "; // person position
+
+
+
+            //                                  --- Scope START --- "█▒▓ "
+            Console.SetCursorPosition(1, 12);
+            Console.Write("-SCOPE-");
+
+            Console.SetCursorPosition(3, 13);
+            Console.Write(surroundings[0, 0]); // 1
+            Console.SetCursorPosition(4, 13);
+            Console.Write(surroundings[0, 1]); // 2
+            Console.SetCursorPosition(5, 13);
+            Console.Write(surroundings[0, 2]); // 3
+
+            Console.SetCursorPosition(3, 14);
+            Console.Write(surroundings[1, 0]);
+            Console.SetCursorPosition(4, 14);
+            Console.Write("+");
+            Console.SetCursorPosition(5, 14);
+            Console.Write(surroundings[1, 2]);
+
+            Console.SetCursorPosition(3, 15);
+            Console.Write(surroundings[2, 0]);
+            Console.SetCursorPosition(4, 15);
+            Console.Write(surroundings[2, 1]);
+            Console.SetCursorPosition(5, 15);
+            Console.Write(surroundings[2, 2]);
+            //                                  --- Scope END ---
+
+            int teleportSouth = cityMap.GetLength(0) - 2;
+            int teleportNorth = 1;
+            int teleportWest = 1;
+            int teleportEast = cityMap.GetLength(1) - 2;
             switch (person.Direction)
             {
                 case "N":
-                    if (pacMan == false)
+                    if (pacMan == false) // sinCity.pacMan == false
                     {
                         person.Direction = "S";
+                        person.YPos++; // South
                     }
                     else
                     {
-                        person.YPos = teleportDown;
+                        person.YPos = teleportSouth;
                     }
                     break;
                 case "S":
                     if (pacMan == false)
                     {
                         person.Direction = "N";
+                        person.YPos--; // North
                     }
                     else
                     {
-                        person.YPos = teleportUp;
+                        person.YPos = teleportNorth;
                     }
                     break;
                 case "E":
                     if (pacMan == false)
                     {
                         person.Direction = "W";
+                        person.XPos--; // West
                     }
                     else
                     {
-                        person.XPos = teleportLeft;
+                        person.XPos = teleportWest;
                     }
                     break;
                 case "W":
                     if (pacMan == false)
                     {
                         person.Direction = "E";
+                        person.XPos++; // East
                     }
                     else
                     {
-                        person.XPos = teleportRight;
+                        person.XPos = teleportEast;
                     }
                     break;
+                /*
+            // Top Row
+            (surroundings[0, 0] != " ")     // 1 "1    "
+            (surroundings[0, 1] != " ")     // 2 "  2  "
+            (surroundings[0, 2] != " ")     // 3 "    3"
+            // Mid Row                                
+            (surroundings[1, 0] != " ")     // 4 "4    "
+            (surroundings[1, 0]  = "+")     // 4 "  +  "  person
+            (surroundings[1, 2] != " ")     // 6 "    6"
+            // Bottom Row                                  
+            (surroundings[2, 0] != " ")     // 7 "7    "
+            (surroundings[2, 1] != " ")     // 8 "  8  "
+            (surroundings[2, 2] != " ")     // 9 "    9"
 
+                1 2 3
+                4 + 6
+                7 8 9
+                */
 
                 case "NE":
-                    break;
+                    if (pacMan == false)
+                    {
+                        if ((surroundings[0, 1] != " ") && (surroundings[0, 2] != " ") && (surroundings[1, 2] != " ")) // NE Corner filled 2,3,6
+                        {
+                            person.Direction = "SW";
+                            person.YPos++; // South
+                            person.XPos--; // West
+                        }
+                        else if ((surroundings[0, 1] == " ") && (surroundings[0, 2] != " ") && (surroundings[1, 2] == " ")) // NE Outside Corner filled 3
+                        {
+                            person.Direction = "SW";
+                            person.YPos++; // South
+                            person.XPos--; // West
+                        }
+                        else if ((surroundings[0, 1] != " ") && (surroundings[1, 2] == " ")) // Top filled, right unfilled
+                        {
+                            person.Direction = "SE";
+                            person.YPos++; // South
+                            person.XPos++; // East
+                        }
+                        else if ((surroundings[0, 1] == " ") && (surroundings[1, 2] != " ")) // Top unfilled, right filled
+                        {
+                            person.Direction = "NW";
+                            person.YPos--; // North
+                            person.XPos--; // West
+                        }
+
+                    }
+                    else
+                    {
+                        if ((surroundings[0, 1] == " ") && (surroundings[0, 2] != " ") && (surroundings[1, 2] == " ")) // NE Corner filled 2,3,6
+                        {
+                            person.YPos = teleportSouth;
+                            person.XPos = teleportWest;
+
+                        }
+                        else if ((surroundings[0, 1] != " ") && (surroundings[0, 2] != " ") && (surroundings[1, 2] != " ")) // NE Corner filled 2,3,6
+                        {
+                            person.YPos = teleportSouth;
+                            person.XPos = teleportWest;
+
+                        }
+                        else if ((surroundings[0, 1] != " ") && (surroundings[1, 2] == " ")) // North filled, east unfilled
+                        {
+                            person.YPos = teleportSouth; // South
+                        }
+                        else if ((surroundings[0, 1] == " ") && (surroundings[1, 2] != " ")) // North unfilled, east filled
+                        {
+                            person.XPos=teleportWest; // West
+                        }
+                    }
+                    break; // OK!
                 case "SE":
-                    break;
+                    if (pacMan == false)
+                    {
+                        if ((surroundings[2, 1] != " ") && (surroundings[2, 2] != " ") && (surroundings[1, 2] != " ")) // SE Corner filled 8,9,6
+                        {
+                            person.Direction = "NW";
+                            person.YPos--; // North
+                            person.XPos--; // West
+                        }
+                        else if ((surroundings[2, 1] == " ") && (surroundings[2, 2] != " ") && (surroundings[1, 2] == " ")) // SE Outer Corner
+                        {
+                            person.Direction = "NW";
+                            person.YPos--; // North
+                            person.XPos--; // West
+                        }
+                        else if ((surroundings[2, 1] != " ") && (surroundings[1, 2] == " ")) // Bottom filled, right unfilled
+                        {
+                            person.Direction = "NE";
+                            person.YPos--; // North
+                            person.XPos++; // East
+                        }
+                        else if ((surroundings[2, 1] == " ") && (surroundings[1, 2] != " ")) // Bottom unfilled, right filled
+                        {
+                            person.Direction = "SW";
+                            person.YPos++; // South
+                            person.XPos--; // West
+                        }
+
+                    }
+                    else
+                    {
+                        if ((surroundings[2, 1] != " ") && (surroundings[2, 2] != " ") && (surroundings[1, 2] != " ")) // SE Corner filled 8,9,6
+                        {
+                            person.YPos = teleportNorth;
+                            person.XPos = teleportWest;
+                        }
+                        else if ((surroundings[2, 1] == " ") && (surroundings[2, 2] != " ") && (surroundings[1, 2] == " ")) // SE Outer Corner
+                        {
+                            person.YPos = teleportNorth;
+                            person.XPos = teleportWest;
+                        }
+                        else if ((surroundings[2, 1] != " ") && (surroundings[1, 2] == " ")) // South filled, East unfilled
+                        {
+                            person.YPos = teleportNorth;
+                        }
+                        else if ((surroundings[2, 1] == " ") && (surroundings[1, 2] != " ")) // South unfilled, East filled
+                        {
+                            person.XPos = teleportWest;
+                        }
+                    }
+                    break; // OK
                 case "NW":
-                    break;
+                    if (pacMan == false)
+                    {
+                        if ((surroundings[0, 0] != " ") && (surroundings[0, 1] != " ") && (surroundings[1, 0] != " ")) // NE Corner filled 1,2,4
+                        {
+                            person.Direction = "SE";
+                            person.YPos++; // South
+                            person.XPos++; // East
+                        }
+                        else if ((surroundings[0, 0] != " ") && (surroundings[0, 1] == " ") && (surroundings[1, 0] == " ")) // NE Corner filled 1,2,4
+                        {
+                            person.Direction = "SE";
+                            person.YPos++; // South
+                            person.XPos++; // East
+                        }
+                        else if ((surroundings[0, 1] != " ") && (surroundings[1, 0] == " ")) // North filled, west unfilled
+                        {
+                            person.Direction = "SW";
+                            person.YPos++; // South
+                            person.XPos--; // West
+                        }
+                        else if ((surroundings[0, 1] == " ") && (surroundings[1, 0] != " ")) // North unfilled, west filled
+                        {
+                            person.Direction = "NE";
+                            person.YPos--; // North
+                            person.XPos++; // East
+                        }
+
+                    }
+                    else
+                    {
+                        if ((surroundings[0, 0] != " ") && (surroundings[0, 1] != " ") && (surroundings[1, 0] != " ")) // NW Corner filled 1,2,4
+                        {
+                            person.YPos = teleportSouth; // South
+                            person.XPos = teleportEast; // East
+                        }
+                        else if ((surroundings[0, 0] != " ") && (surroundings[0, 1] == " ") && (surroundings[1, 0] == " ")) // NW Corner filled 1,2,4
+                        {
+                            person.YPos = teleportSouth; // South
+                            person.XPos = teleportEast; // East
+                        }
+                        else if ((surroundings[0, 1] != " ") && (surroundings[1, 0] == " ")) // North filled, west unfilled
+                        {
+                            person.YPos= teleportSouth; // South
+                        }
+                        else if ((surroundings[0, 1] == " ") && (surroundings[1, 0] != " ")) // North unfilled, west filled
+                        {
+                            person.XPos = teleportEast; // East
+                        }
+                    }
+            break;
                 case "SW":
+                    if (pacMan == false)
+                    {
+                        if ((surroundings[2, 0] != " ") && (surroundings[2, 1] != " ") && (surroundings[1, 0] != " ")) // SW Corner filled 7,8,4
+                        {
+                            person.Direction = "NE";
+                            person.YPos--; // North
+                            person.XPos++; // East
+                        }
+                        else if ((surroundings[2, 0] != " ") && (surroundings[2, 1] == " ") && (surroundings[1, 0] == " ")) // SW Outer Corner filled 7,8,4
+                        {
+                            person.Direction = "NE";
+                            person.YPos--; // North
+                            person.XPos++; // East
+                        }
+                        else if ((surroundings[2, 1] != " ") && (surroundings[1, 0] == " ")) // South filled, west unfilled
+                        {
+                            person.Direction = "NW";
+                            person.YPos--; // North
+                            person.XPos--; // West
+                        }
+                        else if ((surroundings[2, 1] == " ") && (surroundings[1, 0] != " ")) // South unfilled, west filled
+                        {
+                            person.Direction = "SE";
+                            person.YPos++; // South
+                            person.XPos++; // East
+                        }
+
+                    }
+                    else
+                    {
+                        if ((surroundings[2, 0] != " ") && (surroundings[2, 1] != " ") && (surroundings[1, 0] != " ")) // SW Corner filled 7,8,4
+                        {
+                            person.YPos = teleportNorth;
+                            person.XPos = teleportEast;
+                        }
+                        else if ((surroundings[2, 0] != " ") && (surroundings[2, 1] == " ") && (surroundings[1, 0] == " ")) // SW Outer Corner filled 7,8,4
+                        {
+                            person.YPos = teleportNorth;
+                            person.XPos = teleportEast;
+                        }
+                        else if ((surroundings[2, 1] != " ") && (surroundings[1, 0] == " ")) // South filled, west unfilled
+                        {
+                            person.YPos = teleportNorth; // North
+                        }
+                        else if ((surroundings[2, 1] == " ") && (surroundings[1, 0] != " ")) // South unfilled, west filled
+                        {
+                            person.XPos=teleportEast; // East
+                        }
+                    }
                     break;
-
-
                 default:
                     break;
             }
             return cityMap;
-        }
-
+        } // Set pacMan to toggle bounce-style or Pac Man-teleport
     }
 }

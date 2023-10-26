@@ -413,7 +413,7 @@ namespace CopsNRobbers
             Console.SetCursorPosition(1, 1);
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Citizen: ");
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("☻");
             Console.SetCursorPosition(1, 2);
             Console.ForegroundColor = ConsoleColor.White;
