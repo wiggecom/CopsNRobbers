@@ -87,8 +87,8 @@ namespace CopsNRobbers
             }
 
             bool okDir = false;
-            int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
-            int topStartCentered = (Console.WindowHeight / 2) - (cityMap.GetLength(0) / 2);
+            //int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
+           // int topStartCentered = (Console.WindowHeight / 2) - (cityMap.GetLength(0) / 2);
             switch (person.Direction)
             {
                 case "N":
@@ -241,7 +241,11 @@ namespace CopsNRobbers
         public static string[,,] ClearPerson(string[,,] cityMap, Person person)
         {
             int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
-            int topStartCentered = (Console.WindowHeight / 2) - (cityMap.GetLength(0) / 2);
+
+            // Switch comment to change between set position or centered, here, in method Person.PlacePerson and Program.cs
+            // int topStartCentered = (Console.WindowHeight / 2) - (cityMap.GetLength(0) / 2);
+            int topStartCentered = 7;
+
             cityMap[person.YPos, person.XPos, person.DPos] = " ";
             Console.SetCursorPosition(person.XPos + leftStartCentered, person.YPos + topStartCentered);
             Console.Write(" ");
@@ -250,7 +254,11 @@ namespace CopsNRobbers
         public static string[,,] PlacePerson(string[,,] cityMap, Person person)
         {
             int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
-            int topStartCentered = (Console.WindowHeight / 2) - (cityMap.GetLength(0) / 2);
+
+            // Switch comment to change between set position or centered, here, in method Person.ClearPerson and Program.cs
+            // int topStartCentered = (Console.WindowHeight / 2) - (cityMap.GetLength(0) / 2);
+            int topStartCentered = 7;
+
             cityMap[person.YPos, person.XPos, person.DPos] = person.Symbol;
             Console.SetCursorPosition(person.XPos + leftStartCentered, person.YPos + topStartCentered);
             Console.Write(person.Symbol);
@@ -462,31 +470,57 @@ namespace CopsNRobbers
             surroundings[1, 1] = " "; // person position
 
 
-
+            // ☺ ☻ ♥ ♦ ♣ ♠ • ◘ ○ ◙ ♂ ♀ ♪ ♫ ☼ ► ◄ ↕ ‼ ¶ § ▬ ↨ ↑ ↓
+            // → ← ∟ ↔ ▲ ▼ ^ ` ⌂ Ü ü º¿¡ ⌐ ¬ ª ® © « » ░ ▒ ▓ █ ▄ ▌▐ ▀
+            // │ ┤ ╡ ╢ ╖ ╕ ╣ ║ ╗ ╝ ╜ ╛ ┐ └ ┴ ├ ├ ─ ┼ ╞
+            //  ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧ ╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ┘ ┌
+            // - _ / | \
             //                                  --- Scope START --- "█▒▓ "
+            Console.SetCursorPosition(1, 10);
+            Console.Write("╔═════╗");
+            Console.SetCursorPosition(1, 11);
+            Console.Write("║CRASH║");
             Console.SetCursorPosition(1, 12);
-            Console.Write("-SCOPE-");
+            Console.Write("║SCOPE║");
+            Console.SetCursorPosition(1, 13);
+            Console.Write("╠═════╣");
 
-            Console.SetCursorPosition(3, 13);
-            Console.Write(surroundings[0, 0]); // 1
-            Console.SetCursorPosition(4, 13);
-            Console.Write(surroundings[0, 1]); // 2
-            Console.SetCursorPosition(5, 13);
-            Console.Write(surroundings[0, 2]); // 3
-
+            Console.SetCursorPosition(1, 14);
+            Console.Write("║ "); // Edge
             Console.SetCursorPosition(3, 14);
-            Console.Write(surroundings[1, 0]);
+            Console.Write(surroundings[0, 0]); // 1
             Console.SetCursorPosition(4, 14);
-            Console.Write("+");
+            Console.Write(surroundings[0, 1]); // 2
             Console.SetCursorPosition(5, 14);
-            Console.Write(surroundings[1, 2]);
+            Console.Write(surroundings[0, 2]); // 3
+            Console.SetCursorPosition(6, 14);
+            Console.Write(" ║"); // Edge
 
+            Console.SetCursorPosition(1, 15);
+            Console.Write("║ "); // Edge
             Console.SetCursorPosition(3, 15);
-            Console.Write(surroundings[2, 0]);
+            Console.Write(surroundings[1, 0]);
             Console.SetCursorPosition(4, 15);
-            Console.Write(surroundings[2, 1]);
+            Console.Write("+");
             Console.SetCursorPosition(5, 15);
+            Console.Write(surroundings[1, 2]);
+            Console.SetCursorPosition(6, 15);
+            Console.Write(" ║"); // Edge
+
+            Console.SetCursorPosition(1, 16);
+            Console.Write("║ "); // Edge
+            Console.SetCursorPosition(3, 16);
+            Console.Write(surroundings[2, 0]);
+            Console.SetCursorPosition(4, 16);
+            Console.Write(surroundings[2, 1]);
+            Console.SetCursorPosition(5, 16);
             Console.Write(surroundings[2, 2]);
+            Console.SetCursorPosition(6, 16);
+            Console.Write(" ║"); // Edge
+
+            Console.SetCursorPosition(1, 17);
+            Console.Write("╚═════╝");
+
             //                                  --- Scope END ---
 
             int teleportSouth = cityMap.GetLength(0) - 2;
@@ -539,24 +573,6 @@ namespace CopsNRobbers
                         person.XPos = teleportEast;
                     }
                     break;
-                /*
-            // Top Row
-            (surroundings[0, 0] != " ")     // 1 "1    "
-            (surroundings[0, 1] != " ")     // 2 "  2  "
-            (surroundings[0, 2] != " ")     // 3 "    3"
-            // Mid Row                                
-            (surroundings[1, 0] != " ")     // 4 "4    "
-            (surroundings[1, 0]  = "+")     // 4 "  +  "  person
-            (surroundings[1, 2] != " ")     // 6 "    6"
-            // Bottom Row                                  
-            (surroundings[2, 0] != " ")     // 7 "7    "
-            (surroundings[2, 1] != " ")     // 8 "  8  "
-            (surroundings[2, 2] != " ")     // 9 "    9"
-
-                1 2 3
-                4 + 6
-                7 8 9
-                */
 
                 case "NE":
                     if (pacMan == false)

@@ -10,7 +10,8 @@ namespace CopsNRobbers
     {
         public override string Symbol => "☺";
         public List<string> Stolen { get; set; }
-        public bool IsArrested { get; set; }
+        //public List<string> Stolen { get; } = new List<string>(); // Egenskap för stulna föremål
+        public bool IsArrested { get; set; } // = false; // Egenskap om tjuven är arresterad
 
 
         public Thief(int xPos, int yPos, int dPos, string direction, string name) : base(xPos, yPos, dPos, direction, name)

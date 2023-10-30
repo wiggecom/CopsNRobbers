@@ -19,11 +19,6 @@ namespace CopsNRobbers
             Belongings.Add("Keys");
             Belongings.Add("Watch");
             Belongings.Add("Wallet");
-
-            //Inventory.Add("Nycklar");
-            //Inventory.Add("Mobiltelefon");
-            //Inventory.Add("Pengar");
-            //Inventory.Add("Klocka");
         }
 
 

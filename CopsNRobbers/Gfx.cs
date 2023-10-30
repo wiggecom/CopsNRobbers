@@ -66,10 +66,10 @@ namespace CopsNRobbers
             // 87 chars wide, 6 chars high (center - 44)
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.SetCursorPosition(posCenteredStartLeft, cityTopStartCentered + -7);
+            Console.SetCursorPosition(posCenteredStartLeft, cityTopStartCentered  -7);
             Console.Write("░░░   ▒▒▒▒       ▒▒▒▒ ░░░░     ▒▒▒▒  ▒▒▒▒    ░░░   ▓▓▓▓   ░░░░░  ▒▒▒▒      ▓▓▓▓      ░░░");
 
-            Console.SetCursorPosition(posCenteredStartLeft, cityTopStartCentered - 6);
+            Console.SetCursorPosition(posCenteredStartLeft, cityTopStartCentered  -6);
             Console.Write("░▒▒▒▒ ▒▓▒███ ░░██▒▓▒▓▓ ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("▓▓▓▓▓ ▓▓ ▓▓  ▓▓ ");
@@ -84,7 +84,7 @@ namespace CopsNRobbers
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write(" ▒▓▓▓░░░░ █▓█▓  ▒▒███░░");
 
-            Console.SetCursorPosition(posCenteredStartLeft, cityTopStartCentered -5);
+            Console.SetCursorPosition(posCenteredStartLeft, cityTopStartCentered  -5);
             Console.Write("▓▓▓▒▓ ▒▒▒█▓█▓▓░██▒▒▓▓█ ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("██    ██ ███ ██ ");
@@ -99,7 +99,7 @@ namespace CopsNRobbers
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("░▒▓█▓▒░▒▒▒▓▓▓▓░░▒▓█▓█░░");
 
-            Console.SetCursorPosition(posCenteredStartLeft, cityTopStartCentered -4);
+            Console.SetCursorPosition(posCenteredStartLeft, cityTopStartCentered  -4);
             Console.Write("▓█▓▒███▓▒███▓█▒███▒▓█▓  ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("▓▓▓  ▓▓ ▓▓▓▓▓▓ ");
