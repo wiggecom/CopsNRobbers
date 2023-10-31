@@ -11,14 +11,16 @@ namespace CopsNRobbers
         public override string Symbol => "☺";
         public List<string> Stolen { get; set; }
         public bool IsArrested { get; set; }
+        public DateTime WentToPrison { get; set; }
 
 
         public Thief(int xPos, int yPos, int dPos, string direction, string name) : base(xPos, yPos, dPos, direction, name)
         {
             {
                 Stolen = new List<string>();
-                Stolen.Add("Knife");
+                //Stolen.Add("Knife");
                 IsArrested = false;
+                WentToPrison = DateTime.MinValue;
             }
         }
     }

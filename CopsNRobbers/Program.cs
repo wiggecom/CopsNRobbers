@@ -7,6 +7,10 @@ namespace CopsNRobbers
     {
         static void Main(string[] args)
         {
+            Console.Clear();
+            Gfx.DrawTinyRobbery();
+            Console.ReadKey();
+            Console.Clear();
 
             Console.CursorVisible = false;
             bool pacMan = false; // Toggles bounce / pacman
@@ -101,6 +105,10 @@ namespace CopsNRobbers
             //{
             //    Console.WriteLine(belonging);
             //}
+            Console.SetCursorPosition(1, 9);
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("░░░▒▒▒▒▒▒▓▓▓▓▓▓▓████ NEWS █████▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
+
             while (true)
             {
                 //Console.ReadKey();
@@ -115,16 +123,16 @@ namespace CopsNRobbers
                         if ((personsList[i].XPos == personsList[j].XPos) && (personsList[i].YPos == personsList[j].YPos))
                         {
                             events.Meeting(personsList[i], personsList[j]);
-                            Console.ForegroundColor = (ConsoleColor)(rnd.Next(1,16));
-                            Console.MoveBufferArea(160, 5, 20, 20, 160, 6);
-                            Console.SetCursorPosition(160, 5);
-                            Console.Write(i + " " + j);
+                            //Console.ForegroundColor = (ConsoleColor)(rnd.Next(1,16));
+                            //Console.MoveBufferArea(160, 5, 20, 20, 160, 6);
+                            //Console.SetCursorPosition(160, 5);
+                            //Console.Write(i + " " + j);
                         }
                         
                     }
                 }
                 Events.CitySummary();
-                Thread.Sleep(120); // ----------------------------------------------  SLEEP -----------------------------------------------------
+                Thread.Sleep(10); // ----------------------------------------------  SLEEP -----------------------------------------------------
                 //pacMan = Toggle(pacMan, cityMap);
             }
         }
@@ -147,7 +155,7 @@ namespace CopsNRobbers
                 ConsoleKeyInfo key = Console.ReadKey(true);
                 switch (key.Key)
                 {
-                    case ConsoleKey.Spacebar:
+                    case ConsoleKey.N:
                         if (pacMan == true)
                         {
                             pacMan = false;

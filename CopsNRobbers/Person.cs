@@ -473,49 +473,51 @@ namespace CopsNRobbers
             //  ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧ ╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ┘ ┌
             // - _ / | \
             //                                  --- Scope START --- "█▒▓ "
-            Console.SetCursorPosition(1, 10);
+            int scopePosY = 0;
+            int scopePosX = 5;
+            Console.SetCursorPosition(0+scopePosX, 0+scopePosY);
             Console.Write("╔═════╗");
-            Console.SetCursorPosition(1, 11);
+            Console.SetCursorPosition(0 + scopePosX, 1 + scopePosY);
             Console.Write("║CRASH║");
-            Console.SetCursorPosition(1, 12);
+            Console.SetCursorPosition(0 + scopePosX, 2 + scopePosY);
             Console.Write("║SCOPE║");
-            Console.SetCursorPosition(1, 13);
+            Console.SetCursorPosition(0 + scopePosX, 3 + scopePosY);
             Console.Write("╠═════╣");
 
-            Console.SetCursorPosition(1, 14);
+            Console.SetCursorPosition(0 + scopePosX, 4 + scopePosY);
             Console.Write("║ "); // Edge
-            Console.SetCursorPosition(3, 14);
+            Console.SetCursorPosition(2 + scopePosX, 4 + scopePosY);
             Console.Write(surroundings[0, 0]); // 1
-            Console.SetCursorPosition(4, 14);
+            Console.SetCursorPosition(3 + scopePosX, 4 + scopePosY);
             Console.Write(surroundings[0, 1]); // 2
-            Console.SetCursorPosition(5, 14);
+            Console.SetCursorPosition(4 + scopePosX, 4 + scopePosY);
             Console.Write(surroundings[0, 2]); // 3
-            Console.SetCursorPosition(6, 14);
+            Console.SetCursorPosition(5 + scopePosX, 4 + scopePosY);
             Console.Write(" ║"); // Edge
 
-            Console.SetCursorPosition(1, 15);
+            Console.SetCursorPosition(0 + scopePosX, 5 + scopePosY);
             Console.Write("║ "); // Edge
-            Console.SetCursorPosition(3, 15);
+            Console.SetCursorPosition(2+ scopePosX, 5 + scopePosY);
             Console.Write(surroundings[1, 0]);
-            Console.SetCursorPosition(4, 15);
+            Console.SetCursorPosition(3 + scopePosX, 5 + scopePosY);
             Console.Write("+");
-            Console.SetCursorPosition(5, 15);
+            Console.SetCursorPosition(4 + scopePosX, 5 + scopePosY);
             Console.Write(surroundings[1, 2]);
-            Console.SetCursorPosition(6, 15);
+            Console.SetCursorPosition(5 + scopePosX, 5 + scopePosY);
             Console.Write(" ║"); // Edge
 
-            Console.SetCursorPosition(1, 16);
+            Console.SetCursorPosition(0 + scopePosX, 6 + scopePosY);
             Console.Write("║ "); // Edge
-            Console.SetCursorPosition(3, 16);
+            Console.SetCursorPosition(2 + scopePosX, 6 + scopePosY);
             Console.Write(surroundings[2, 0]);
-            Console.SetCursorPosition(4, 16);
+            Console.SetCursorPosition(3 + scopePosX, 6 + scopePosY);
             Console.Write(surroundings[2, 1]);
-            Console.SetCursorPosition(5, 16);
+            Console.SetCursorPosition(4 + scopePosX, 6 + scopePosY);
             Console.Write(surroundings[2, 2]);
-            Console.SetCursorPosition(6, 16);
+            Console.SetCursorPosition(5 + scopePosX, 6 + scopePosY);
             Console.Write(" ║"); // Edge
 
-            Console.SetCursorPosition(1, 17);
+            Console.SetCursorPosition(0 + scopePosX, 7 + scopePosY);
             Console.Write("╚═════╝");
 
             //                                  --- Scope END ---

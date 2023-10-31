@@ -8,6 +8,67 @@ namespace CopsNRobbers
 {
     internal class Gfx
     {
+        public static void DrawTinyRobbery()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("      ░░░░░░░░░░                 ");
+            Console.WriteLine("    ░░░░░░░░░░░░░                ");
+            Console.WriteLine("   ░░░░░░░░░░░░░░░               ");
+            Console.Write(    "  ░░░░▒▒▒▒▒▒▒▒▒▒░░             ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("█▓");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("  ░░░                         ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("█▓▒░");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("  ░         ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("▒█▓");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("   ░          ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("█▓▒░");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("  ░░░▒▒          ▒▒░        ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("█▓▒░");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("   ░░▒▒▒▒░░░░░░░░░░░░      ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("█▓▒░");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("   ░░░▒▒░");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("▓▒▓▒▓▒▓▒▓");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("       ██▓▒░");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("▒▒");
+            Console.Write("   ░░ ░▒▒░");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("▓▒▓▒▓");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("░░░      ");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("▓");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("▒▒");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("░░░");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("▒░▒▒");
+            Console.Write("   ░  ░▒▒▒░░░░▒░         ▒▒▒▒");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("░░░");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("▒░░");
+            Console.Write("     ░▒▒▒▒▒▒▒░             ▒▒▒▒");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("░░░");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+        }
         public static void DrawBustedSingleCol()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -410,17 +471,18 @@ namespace CopsNRobbers
         }
         public static void LocalPeeps()
         {
-            Console.SetCursorPosition(1, 1);
+            int peepsListX = 15;
+            Console.SetCursorPosition(peepsListX, 1);
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Citizen: ");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("☻");
-            Console.SetCursorPosition(1, 2);
+            Console.SetCursorPosition(peepsListX, 2);
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Police: ");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write("☻");
-            Console.SetCursorPosition(1, 3);
+            Console.SetCursorPosition(peepsListX, 3);
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Thief: ");
             Console.ForegroundColor = ConsoleColor.Red;
