@@ -16,9 +16,6 @@ namespace CopsNRobbers
         public virtual string Symbol { get; }
         public string Name { get; set; }
 
-        //public string CollidesWith(Person person, Random rnd);
-        //public List<string> Inventory { get; set; } = new List<string>();
-
         public Person(int xPos, int yPos, int dPos, string direction, string name)
         {
             XPos = xPos;

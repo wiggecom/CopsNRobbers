@@ -13,44 +13,99 @@ namespace CopsNRobbers
         private static int ArrestedNumber = 0;
 
         //Encounter
-
+        Random rnd = new Random();
         public void Meeting(Person actingPerson, Person targetPerson)
         {
             bool SamePlace = actingPerson.YPos == targetPerson.YPos && actingPerson.XPos == targetPerson.XPos; // Bool om personerna är på samma plats
+            // --------------------------------------------------------- TEST OF ANY COLLISION START -----------------------------------------------
+            //Console.MoveBufferArea(1, 20, 40, 10, 1, 21);
+            //Console.SetCursorPosition(1, 20);
+            //Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
+            //Console.Write("En medborgare har ");
+            //if (SamePlace)
+            //{
+            //    Type actingPersonType = actingPerson.GetType();
+            //    Type targetPersonType = targetPerson.GetType();
+            //    Console.WriteLine("dansat!, det var en " + actingPersonType + " och en " + targetPersonType);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("svimmat!");
+            //}
+            // --------------------------------------------------------- TEST OF ANY COLLISION END -------------------------------------------------
 
-            if (actingPerson is Thief thief && targetPerson is Citizen citizen && SamePlace) //Om tjuv och medborgare är på samma plats
+            if (actingPerson is Thief && targetPerson is Citizen && SamePlace) //Om medborgare träffar tjuv
             {
-                Console.SetCursorPosition(1, 30);
-                Console.WriteLine("En medborgare har rånats.");
+                Console.MoveBufferArea(1, 20, 40, 10, 1, 21);
+                Console.SetCursorPosition(1, 20);
+                Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
+                Console.WriteLine(actingPerson.Name + " har rånats!");
                 //Console.WriteLine($"Tjuvens position: ({thief.XPos}, {thief.YPos}), Medborgarens position: ({citizen.XPos}, {citizen.YPos})");
-                RobCitizen(thief, citizen); //Anropa RobCitizen
-
+                //RobCitizen(actingPerson, targetPerson); //Anropa RobCitizen // Thief == actingPerson
             }
-            else if (actingPerson is Police police && targetPerson is Thief targetThief && SamePlace) //Om polis och tjuv är på samma plats
+            else if (targetPerson is Thief && actingPerson is Citizen && SamePlace) //Om tjuv träffar medborgare
+            {
+                Console.MoveBufferArea(1, 20, 40, 10, 1, 21);
+                Console.SetCursorPosition(1, 20);
+                Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
+                Console.WriteLine(actingPerson.Name + " har rånats!!");
+                //Console.WriteLine($"Tjuvens position: ({thief.XPos}, {thief.YPos}), Medborgarens position: ({citizen.XPos}, {citizen.YPos})");
+                RobCitizen((Thief)targetPerson, (Citizen)actingPerson); //Anropa RobCitizen // Thief == targetPerson
+            }
+            else if ((actingPerson is Police && targetPerson is Thief && SamePlace) || (targetPerson is Police && actingPerson is Thief && SamePlace)) //Om polis och tjuv är på samma plats
             {
                 //Console.WriteLine("En Tjuv har arresterats.");
                 //Console.WriteLine($"Polisens position: ({police.XPos}, {police.YPos}), Tjuvens position: ({targetThief.XPos}, {targetThief.YPos})");
-                ArrestThief(police, targetThief); //Anropar ArrestTheif
+                //ArrestThief(police, targetThief); //Anropar ArrestTheif
+                Console.MoveBufferArea(1, 20, 40, 10, 1, 21);
+                Console.SetCursorPosition(1, 20);
+                Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
+                Console.WriteLine("En tjuv har åkt dit!");
+                RobbedNumber++;
+
+            }
+            else if (actingPerson is Citizen && targetPerson is Citizen && SamePlace)
+            {
+                //Console.WriteLine("En Tjuv har arresterats.");
+                //Console.WriteLine($"Polisens position: ({police.XPos}, {police.YPos}), Tjuvens position: ({targetThief.XPos}, {targetThief.YPos})");
+                //ArrestThief(police, targetThief); //Anropar ArrestTheif
+                Console.MoveBufferArea(1, 20, 40, 10, 1, 21);
+                Console.SetCursorPosition(1, 20);
+                Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
+                Console.WriteLine("Medborgarna gör en high five!");
+                
 
             }
         }
+        //public void ThiefMeetingCitizen(Thief thief, Citizen citizen)
+        //{
 
+        //}
 
         //Metod för rån
-        public void RobCitizen(Thief thief, Citizen citizen)
+        public void RobCitizen(Thief thief, Person citizen)
         {
-            if (citizen.Belongings.Count > 0)
+            Console.SetCursorPosition(160, 32);
+            
+            if (thief.Stolen.Count > 0)
             {
-                RobbedNumber++;
+                //if (citizen.Belongings.Count > 0)
+                //{
 
-                Random random = new Random();
-                int removeAtIndex = random.Next(citizen.Belongings.Count);
-
-                string stolenItem = citizen.Belongings[removeAtIndex];
-                citizen.Belongings.RemoveAt(removeAtIndex);
-                thief.Stolen.Add(stolenItem);
-
+                //}
             }
+            //if (citizen.Belongings.Count > 0)
+            //{
+            //    RobbedNumber++;
+
+            //    Random random = new Random();
+            //    int removeAtIndex = random.Next(citizen.Belongings.Count);
+
+            //    string stolenItem = citizen.Belongings[removeAtIndex];
+            //    citizen.Belongings.RemoveAt(removeAtIndex);
+            //    thief.Stolen.Add(stolenItem);
+
+            //}
         }
 
         //Metod för arrest

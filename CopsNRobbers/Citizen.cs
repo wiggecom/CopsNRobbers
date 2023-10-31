@@ -14,26 +14,13 @@ namespace CopsNRobbers
 
         public Citizen(int xPos, int yPos, int dPos, string direction, string name) : base(xPos, yPos, dPos, direction, name)
         {
-            Belongings = new List<string>();
-            Belongings.Add("Mobile phone");
-            Belongings.Add("Keys");
-            Belongings.Add("Watch");
-            Belongings.Add("Wallet");
-        }
-
-
-        /*public string CollidesWith(Person person, Random rnd)
-        {
-            if (person is Thief && Inventory.Count > 0)
             {
-                int index = rnd.Next(0, Belongings.Count);
-                person.Stolen.Add(Belongings[index]);
-                Belongings.RemoveAt(index);
-                return Message.Robbery;
+                Belongings = new List<string>();
+                Belongings.Add("Mobile phone");
+                Belongings.Add("Keys");
+                Belongings.Add("Watch");
+                Belongings.Add("Wallet");
             }
-
-            return null;
-        }*/
+        }
     }
-
 }

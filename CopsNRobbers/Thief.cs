@@ -10,39 +10,16 @@ namespace CopsNRobbers
     {
         public override string Symbol => "☺";
         public List<string> Stolen { get; set; }
-        //public List<string> Stolen { get; } = new List<string>(); // Egenskap för stulna föremål
-        public bool IsArrested { get; set; } // = false; // Egenskap om tjuven är arresterad
+        public bool IsArrested { get; set; }
 
 
         public Thief(int xPos, int yPos, int dPos, string direction, string name) : base(xPos, yPos, dPos, direction, name)
         {
             {
                 Stolen = new List<string>();
+                Stolen.Add("Knife");
                 IsArrested = false;
             }
         }
-
-        //public Thief(Random random) : Person
-        //{
-        //    Stolen = new List<string>();
-        //    IsArrested = false;
-        //}
-
-        //public string CollidesWith(Person person, Random rnd)
-        //{
-        //if (person is Citizen && person.Inventory.Count > 0)
-        //{
-        //int index = rnd.Next(person.Inventory.Count);
-        //Inventory.Add(person.Inventory[index]);
-        //person.Inventory.RemoveAt(index);
-        //return Message.Robbery;
-        //}
-        //if (person is Police && person.Inventory.Count > 0)
-        //{
-        //person.Inventory.AddRange(Inventory);
-        //Inventory.Clear();
-        //return Message.Arrest;
-        //}
-        //return null;
     }
 }
