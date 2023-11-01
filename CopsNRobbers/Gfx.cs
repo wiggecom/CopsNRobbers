@@ -8,19 +8,30 @@ namespace CopsNRobbers
 {
     internal class Gfx
     {
-        public static void DrawTinyRobbery()
+        public static void DrawTinyRobbery(int startX, int startY)
         {
+            Console.SetCursorPosition(startX, startY);
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("      ░░░░░░░░░░                 ");
-            Console.WriteLine("    ░░░░░░░░░░░░░                ");
-            Console.WriteLine("   ░░░░░░░░░░░░░░░               ");
+            Console.Write("      ░░░░░░░░░░                 ");
+
+            Console.SetCursorPosition(startX, startY+1);
+            Console.Write("    ░░░░░░░░░░░░░                ");
+
+            Console.SetCursorPosition(startX, startY + 2);
+            Console.Write("   ░░░░░░░░░░░░░░░               ");
+
+            Console.SetCursorPosition(startX, startY + 3);
             Console.Write(    "  ░░░░▒▒▒▒▒▒▒▒▒▒░░             ");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("█▓");
+            Console.Write("█▓");
+
+            Console.SetCursorPosition(startX, startY + 4);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("  ░░░                         ");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("█▓▒░");
+            Console.Write("█▓▒░");
+
+            Console.SetCursorPosition(startX, startY + 5);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("  ░         ");
             Console.ForegroundColor = ConsoleColor.White;
@@ -28,15 +39,21 @@ namespace CopsNRobbers
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("   ░          ");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("█▓▒░");
+            Console.Write("█▓▒░");
+
+            Console.SetCursorPosition(startX, startY + 6);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("  ░░░▒▒          ▒▒░        ");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("█▓▒░");
+            Console.Write("█▓▒░");
+
+            Console.SetCursorPosition(startX, startY + 7);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("   ░░▒▒▒▒░░░░░░░░░░░░      ");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("█▓▒░");
+            Console.Write("█▓▒░");
+
+            Console.SetCursorPosition(startX, startY + 8);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("   ░░░▒▒░");
             Console.ForegroundColor = ConsoleColor.White;
@@ -44,7 +61,9 @@ namespace CopsNRobbers
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write("       ██▓▒░");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("▒▒");
+            Console.Write("▒▒");
+
+            Console.SetCursorPosition(startX, startY + 9);
             Console.Write("   ░░ ░▒▒░");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("▓▒▓▒▓");
@@ -57,16 +76,160 @@ namespace CopsNRobbers
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write("░░░");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("▒░▒▒");
+            Console.Write("▒░▒▒");
+
+            Console.SetCursorPosition(startX, startY + 10);
             Console.Write("   ░  ░▒▒▒░░░░▒░         ▒▒▒▒");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write("░░░");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("▒░░");
+            Console.Write("▒░░");
+
+            Console.SetCursorPosition(startX, startY + 11);
             Console.Write("     ░▒▒▒▒▒▒▒░             ▒▒▒▒");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write("░░░");
             Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        public static void DrawTinyBusted()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.WriteLine();
+            Console.WriteLine("╔════════════════════════════════════════════════════════════════════════════════════════╗");
+            Console.Write("║ ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("▓▓▓▓████▓▓▓▓███▓▓▓▓████▓▓▓▓████▓▓▓▓██▓▓");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("                                                ║");
+            Console.Write("║ ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("██");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("    ░▒░   ░▒░   ░▒░   ░▒░   ░▒░    ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("██");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("                                                ║");
+            Console.Write("║ ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("▓▓");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("    ▒▓▒   ▒▓▒   ▒▓▒   ▒▓▒   ▒▓▒    ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("▓▓");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("                                                ║");
+            Console.Write("║ ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("██");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("    ▒▓▒   ▒▓▒   ▒▓▒   ▒▓▒   ▒▓▒    ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("██");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("  █████  ██  ██ █████ ██████ ████ █████    ███  ║");
+            Console.Write("║ ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("▓▓");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("    ▒▓▒");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("░▓▓███▓▒ ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("▒▓▒ ");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("▒▓███▓▓░");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("▒▓▒    ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("▓▓");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("  ██░░██ ██░ ██░██░░░░  ██░░░██░░░██░░██   ███░ ║");
+            Console.Write("║ ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("██");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("    ▒▓░");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("▓▓▓░▒░   ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("▒▓▒   ");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("░▒░▓▓▓");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("░▓▒    ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("██");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("  █████░░██░ ██░ ███    ██░  ███  ██░  █░   █░░ ║");
+            Console.Write("║ ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("▓▓");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("    ▒▓░");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("▓▓▓███▓▒ ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("▒▓▒ ");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("▒▓███▓▓▓");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("░▓▒    ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("▓▓");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("  ██░░██ ██░ ██░   ██   ██░  ██░░ ██░ ██░    ░  ║");
+            Console.Write("║ ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("██");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("    ▒▓░");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("▓▓▓░▒░   ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("▒▓▒   ");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("░▒░▓▓▓");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("░▓▒    ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("██");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("  █████░░ ████░░████░░  ██░  ████ █████░░   █   ║");
+            Console.Write("║ ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("▓▓");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("    ▒▓░");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("░▓▓███▓▒ ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("▒▓▒ ");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("▒▓███▓▓░");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("░▓▒    ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("▓▓");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("   ░░░░░   ░░░░  ░░░░    ░░   ░░░░ ░░░░░     ░  ║");
+            Console.Write("║ ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("██");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("    ▒▓░   ░▒░   ▒▓▒   ░▒░   ░▓▒    ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("██");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("                                                ║");
+            Console.Write("║ ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("▓▓▓▓████▓▓▓▓███▓▓▓▓████▓▓▓▓████▓▓▓▓██▓▓");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("                                                ║");
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════════════════════╝");
             Console.ForegroundColor = ConsoleColor.White;
         }
         public static void DrawBustedSingleCol()
