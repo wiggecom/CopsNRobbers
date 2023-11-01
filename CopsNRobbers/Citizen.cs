@@ -11,6 +11,7 @@ namespace CopsNRobbers
     {
         public override string Symbol => "☻";
         public List<string> Belongings { get; set; }
+        public bool Woke { get; set; }
 
         public Citizen(int xPos, int yPos, int dPos, string direction, string name) : base(xPos, yPos, dPos, direction, name)
         {
@@ -20,6 +21,7 @@ namespace CopsNRobbers
                 Belongings.Add("Keys");
                 Belongings.Add("Watch");
                 Belongings.Add("Wallet");
+                Woke = false;
             }
         }
     }
