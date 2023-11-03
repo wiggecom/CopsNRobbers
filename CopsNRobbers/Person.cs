@@ -85,7 +85,7 @@ namespace CopsNRobbers
 
             bool okDir = false;
             //int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
-           // int topStartCentered = (Console.WindowHeight / 2) - (cityMap.GetLength(0) / 2);
+            // int topStartCentered = (Console.WindowHeight / 2) - (cityMap.GetLength(0) / 2);
             switch (person.Direction)
             {
                 case "N":
@@ -465,17 +465,11 @@ namespace CopsNRobbers
             surroundings[2, 0] = cityMap[y + 1, x - 1, z];
 
             surroundings[1, 1] = " "; // person position
-
-
-            // ☺ ☻ ♥ ♦ ♣ ♠ • ◘ ○ ◙ ♂ ♀ ♪ ♫ ☼ ► ◄ ↕ ‼ ¶ § ▬ ↨ ↑ ↓
-            // → ← ∟ ↔ ▲ ▼ ^ ` ⌂ Ü ü º¿¡ ⌐ ¬ ª ® © « » ░ ▒ ▓ █ ▄ ▌▐ ▀
-            // │ ┤ ╡ ╢ ╖ ╕ ╣ ║ ╗ ╝ ╜ ╛ ┐ └ ┴ ├ ├ ─ ┼ ╞
-            //  ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧ ╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ┘ ┌
-            // - _ / | \
+            #region Scope
             //                                  --- Scope START --- "█▒▓ "
             int scopePosY = 0;
             int scopePosX = 5;
-            Console.SetCursorPosition(0+scopePosX, 0+scopePosY);
+            Console.SetCursorPosition(0 + scopePosX, 0 + scopePosY);
             Console.Write("╔═════╗");
             Console.SetCursorPosition(0 + scopePosX, 1 + scopePosY);
             Console.Write("║CRASH║");
@@ -497,7 +491,7 @@ namespace CopsNRobbers
 
             Console.SetCursorPosition(0 + scopePosX, 5 + scopePosY);
             Console.Write("║ "); // Edge
-            Console.SetCursorPosition(2+ scopePosX, 5 + scopePosY);
+            Console.SetCursorPosition(2 + scopePosX, 5 + scopePosY);
             Console.Write(surroundings[1, 0]);
             Console.SetCursorPosition(3 + scopePosX, 5 + scopePosY);
             Console.Write("+");
@@ -521,11 +515,21 @@ namespace CopsNRobbers
             Console.Write("╚═════╝");
 
             //                                  --- Scope END ---
-
-            int teleportSouth = cityMap.GetLength(0) - 2;
+            #endregion
+            int teleportSouth = 25;
             int teleportNorth = 1;
             int teleportWest = 1;
-            int teleportEast = cityMap.GetLength(1) - 2;
+            int teleportEast = 100;
+            int povertyNorth = 27;
+            int povertySouth = 38;
+            int povertyWest = 81;
+            int povertyEast = 100;
+            int prisonNorth = 27;
+            int prisonSouth = 38;
+            int prisonWest = 1;
+            int prisonEast = 20;
+            // int cityWidth = 102;
+            // int cityHeight = 40;
             switch (person.Direction)
             {
                 case "N":
@@ -536,7 +540,18 @@ namespace CopsNRobbers
                     }
                     else
                     {
-                        person.YPos = teleportSouth;
+                        if (person is Citizen && ((Citizen)person).Woke == true)
+                        {
+                            person.YPos = povertySouth;
+                        }
+                        else if (person is Thief && ((Thief)person).IsArrested == true)
+                        {
+                            person.YPos = prisonSouth;
+                        }
+                        else
+                        {
+                            person.YPos = teleportSouth;
+                        }
                     }
                     break;
                 case "S":
@@ -547,7 +562,18 @@ namespace CopsNRobbers
                     }
                     else
                     {
-                        person.YPos = teleportNorth;
+                        if (person is Citizen && ((Citizen)person).Woke == true)
+                        {
+                            person.YPos = povertyNorth;
+                        }
+                        else if (person is Thief && ((Thief)person).IsArrested == true)
+                        {
+                            person.YPos = prisonNorth;
+                        }
+                        else
+                        {
+                            person.YPos = teleportNorth;
+                        }
                     }
                     break;
                 case "E":
@@ -558,8 +584,20 @@ namespace CopsNRobbers
                     }
                     else
                     {
-                        person.XPos = teleportWest;
+                        if (person is Citizen && ((Citizen)person).Woke == true)
+                        {
+                            person.YPos = povertyWest;
+                        }
+                        else if (person is Thief && ((Thief)person).IsArrested == true)
+                        {
+                            person.YPos = prisonWest;
+                        }
+                        else
+                        {
+                            person.YPos = teleportWest;
+                        }
                     }
+
                     break;
                 case "W":
                     if (pacMan == false)
@@ -569,7 +607,18 @@ namespace CopsNRobbers
                     }
                     else
                     {
-                        person.XPos = teleportEast;
+                        if (person is Citizen && ((Citizen)person).Woke == true)
+                        {
+                            person.YPos = povertyEast;
+                        }
+                        else if (person is Thief && ((Thief)person).IsArrested == true)
+                        {
+                            person.YPos = prisonEast;
+                        }
+                        else
+                        {
+                            person.YPos = teleportEast;
+                        }
                     }
                     break;
 
@@ -606,23 +655,70 @@ namespace CopsNRobbers
                     {
                         if ((surroundings[0, 1] == " ") && (surroundings[0, 2] != " ") && (surroundings[1, 2] == " ")) // NE Corner filled 2,3,6
                         {
-                            person.YPos = teleportSouth;
-                            person.XPos = teleportWest;
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.YPos = povertySouth;
+                                person.XPos = povertyWest;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.YPos = prisonSouth;
+                                person.XPos = prisonWest;
+                            }
+                            else
+                            {
+                                person.YPos = teleportSouth;
+                                person.XPos = teleportWest;
+                            }
 
                         }
                         else if ((surroundings[0, 1] != " ") && (surroundings[0, 2] != " ") && (surroundings[1, 2] != " ")) // NE Corner filled 2,3,6
                         {
-                            person.YPos = teleportSouth;
-                            person.XPos = teleportWest;
-
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.YPos = povertySouth;
+                                person.XPos = povertyWest;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.YPos = prisonSouth;
+                                person.XPos = prisonWest;
+                            }
+                            else
+                            {
+                                person.YPos = teleportSouth;
+                                person.XPos = teleportWest;
+                            }
                         }
                         else if ((surroundings[0, 1] != " ") && (surroundings[1, 2] == " ")) // North filled, east unfilled
                         {
-                            person.YPos = teleportSouth; // South
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.YPos = povertySouth;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.YPos = prisonSouth;
+                            }
+                            else
+                            {
+                                person.YPos = teleportSouth;
+                            }
                         }
                         else if ((surroundings[0, 1] == " ") && (surroundings[1, 2] != " ")) // North unfilled, east filled
                         {
-                            person.XPos=teleportWest; // West
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.XPos = povertyWest;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.XPos = prisonWest;
+                            }
+                            else
+                            {
+                                person.XPos = teleportWest;
+                            }
                         }
                     }
                     break; // OK!
@@ -659,21 +755,69 @@ namespace CopsNRobbers
                     {
                         if ((surroundings[2, 1] != " ") && (surroundings[2, 2] != " ") && (surroundings[1, 2] != " ")) // SE Corner filled 8,9,6
                         {
-                            person.YPos = teleportNorth;
-                            person.XPos = teleportWest;
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.YPos = povertyNorth;
+                                person.XPos = povertyWest;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.YPos = prisonNorth;
+                                person.XPos = prisonWest;
+                            }
+                            else
+                            {
+                                person.YPos = teleportNorth;
+                                person.XPos = teleportWest;
+                            }
                         }
                         else if ((surroundings[2, 1] == " ") && (surroundings[2, 2] != " ") && (surroundings[1, 2] == " ")) // SE Outer Corner
                         {
-                            person.YPos = teleportNorth;
-                            person.XPos = teleportWest;
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.YPos = povertyNorth;
+                                person.XPos = povertyWest;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.YPos = prisonNorth;
+                                person.XPos = prisonWest;
+                            }
+                            else
+                            {
+                                person.YPos = teleportNorth;
+                                person.XPos = teleportWest;
+                            }
                         }
                         else if ((surroundings[2, 1] != " ") && (surroundings[1, 2] == " ")) // South filled, East unfilled
                         {
-                            person.YPos = teleportNorth;
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.YPos = povertyNorth;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.YPos = prisonNorth;
+                            }
+                            else
+                            {
+                                person.YPos = teleportNorth;
+                            }
                         }
                         else if ((surroundings[2, 1] == " ") && (surroundings[1, 2] != " ")) // South unfilled, East filled
                         {
-                            person.XPos = teleportWest;
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.XPos = povertyWest;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.XPos = prisonWest;
+                            }
+                            else
+                            {
+                                person.XPos = teleportWest;
+                            }
                         }
                     }
                     break; // OK
@@ -710,24 +854,72 @@ namespace CopsNRobbers
                     {
                         if ((surroundings[0, 0] != " ") && (surroundings[0, 1] != " ") && (surroundings[1, 0] != " ")) // NW Corner filled 1,2,4
                         {
-                            person.YPos = teleportSouth; // South
-                            person.XPos = teleportEast; // East
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.YPos = povertySouth;
+                                person.XPos = povertyEast;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.YPos = prisonSouth;
+                                person.XPos = prisonEast;
+                            }
+                            else
+                            {
+                                person.YPos = teleportSouth;
+                                person.XPos = teleportEast;
+                            }
                         }
                         else if ((surroundings[0, 0] != " ") && (surroundings[0, 1] == " ") && (surroundings[1, 0] == " ")) // NW Corner filled 1,2,4
                         {
-                            person.YPos = teleportSouth; // South
-                            person.XPos = teleportEast; // East
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.YPos = povertySouth;
+                                person.XPos = povertyEast;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.YPos = prisonSouth;
+                                person.XPos = prisonEast;
+                            }
+                            else
+                            {
+                                person.YPos = teleportSouth;
+                                person.XPos = teleportEast;
+                            }
                         }
                         else if ((surroundings[0, 1] != " ") && (surroundings[1, 0] == " ")) // North filled, west unfilled
                         {
-                            person.YPos= teleportSouth; // South
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.YPos = povertySouth;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.YPos = prisonSouth;
+                            }
+                            else
+                            {
+                                person.YPos = teleportSouth;
+                            }
                         }
                         else if ((surroundings[0, 1] == " ") && (surroundings[1, 0] != " ")) // North unfilled, west filled
                         {
-                            person.XPos = teleportEast; // East
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.XPos = povertyEast;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.XPos = prisonEast;
+                            }
+                            else
+                            {
+                                person.XPos = teleportEast;
+                            }
                         }
                     }
-            break;
+                    break;
                 case "SW":
                     if (pacMan == false)
                     {
@@ -761,21 +953,69 @@ namespace CopsNRobbers
                     {
                         if ((surroundings[2, 0] != " ") && (surroundings[2, 1] != " ") && (surroundings[1, 0] != " ")) // SW Corner filled 7,8,4
                         {
-                            person.YPos = teleportNorth;
-                            person.XPos = teleportEast;
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.YPos = povertyNorth;
+                                person.XPos = povertyEast;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.YPos = prisonNorth;
+                                person.XPos = prisonEast;
+                            }
+                            else
+                            {
+                                person.YPos = teleportNorth;
+                                person.XPos = teleportEast;
+                            }
                         }
                         else if ((surroundings[2, 0] != " ") && (surroundings[2, 1] == " ") && (surroundings[1, 0] == " ")) // SW Outer Corner filled 7,8,4
                         {
-                            person.YPos = teleportNorth;
-                            person.XPos = teleportEast;
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.YPos = povertyNorth;
+                                person.XPos = povertyEast;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.YPos = prisonNorth;
+                                person.XPos = prisonEast;
+                            }
+                            else
+                            {
+                                person.YPos = teleportNorth;
+                                person.XPos = teleportEast;
+                            }
                         }
                         else if ((surroundings[2, 1] != " ") && (surroundings[1, 0] == " ")) // South filled, west unfilled
                         {
-                            person.YPos = teleportNorth; // North
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.YPos = povertyNorth;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.YPos = prisonNorth;
+                            }
+                            else
+                            {
+                                person.YPos = teleportNorth;
+                            }
                         }
                         else if ((surroundings[2, 1] == " ") && (surroundings[1, 0] != " ")) // South unfilled, west filled
                         {
-                            person.XPos=teleportEast; // East
+                            if (person is Citizen && ((Citizen)person).Woke == true)
+                            {
+                                person.XPos = povertyEast;
+                            }
+                            else if (person is Thief && ((Thief)person).IsArrested == true)
+                            {
+                                person.XPos = prisonEast;
+                            }
+                            else
+                            {
+                                person.XPos = teleportEast;
+                            }
                         }
                     }
                     break;

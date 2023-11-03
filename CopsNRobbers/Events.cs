@@ -151,7 +151,7 @@ namespace CopsNRobbers
                 Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
                 Console.SetCursorPosition((18 - (police.Name.Length / 2)), strtRow);
                 Console.WriteLine("Konstapel " + police.Name);
-                Console.SetCursorPosition(15, strtRow + 1);
+                Console.SetCursorPosition(17, strtRow + 1);
                 Console.WriteLine("har förpassat");
                 Console.SetCursorPosition((23 - (citizen.Name.Length / 2)), strtRow + 2);
                 Console.WriteLine(citizen.Name);

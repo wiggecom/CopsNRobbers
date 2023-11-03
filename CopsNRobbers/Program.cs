@@ -17,6 +17,7 @@ namespace CopsNRobbers
             int cityHeight = 40;
             int cityDepth = 10;
             // ------------------- //
+            Gfx.SplashScreen(20,12);  // ----------------------------- SPLASH ---------------------------
             Console.SetBufferSize((200), 50);
             Console.SetWindowSize((200), 50);
             int cityLeftStartCentered = (Console.WindowWidth / 2) - (cityWidth / 2);
@@ -55,13 +56,13 @@ namespace CopsNRobbers
             };
             List<Person> personsList = new List<Person>();
             // ---------- Create Peeps BEGIN -----------------
-            Citizen citizen01 = new Citizen(46, 12, 2, "E", "Greger-Dude");
+            Citizen citizen01 = new Citizen(46, 12, 2, "NE", "Greger-Dude");
             cityMap[citizen01.YPos, citizen01.XPos, citizen01.DPos] = citizen01.Symbol;
-            Citizen citizen02 = new Citizen(47, 13, 2, "N", "Greger-Bro");
+            Citizen citizen02 = new Citizen(47, 13, 2, "NW", "Greger-Bro");
             cityMap[citizen02.YPos, citizen02.XPos, citizen02.DPos] = citizen02.Symbol;
-            Citizen citizen03 = new Citizen(20, 17, 2, "E", "Greger the Citizen");
+            Citizen citizen03 = new Citizen(20, 17, 2, "SE", "Greger the Citizen");
             cityMap[citizen03.YPos, citizen03.XPos, citizen03.DPos] = citizen03.Symbol;
-            Citizen citizen04 = new Citizen(50, 17, 2, "W", "Greger-Bro 2");
+            Citizen citizen04 = new Citizen(50, 17, 2, "SW", "Greger-Bro 2");
             cityMap[citizen04.YPos, citizen04.XPos, citizen04.DPos] = citizen04.Symbol;
             Citizen citizen05 = new Citizen(10, 10, 2, "SE", "Greger Jr");                    // Rånoffer 1
             cityMap[citizen05.YPos, citizen05.XPos, citizen05.DPos] = citizen05.Symbol;
@@ -74,7 +75,7 @@ namespace CopsNRobbers
             Thief thief03 = new Thief(20, 1, 1, "SW", "Tjyv-Greger");
             cityMap[thief03.YPos, thief03.XPos, thief03.DPos] = thief03.Symbol;
 
-            Police police01 = new Police(98, 10, 0, "W", "Greger the Cop");
+            Police police01 = new Police(98, 10, 0, "SW", "Greger the Cop");
             cityMap[police01.YPos, police01.XPos, police01.DPos] = police01.Symbol;
             Police police02 = new Police(1, 20, 0, "NE", "Greger the Cop");
             cityMap[police02.YPos, police02.XPos, police02.DPos] = police02.Symbol;
