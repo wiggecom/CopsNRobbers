@@ -22,7 +22,7 @@ namespace CopsNRobbers
                 Stolen = new List<string>();
                 IsArrested = false;
                 LeavingPrison = DateTime.MinValue;
-                SentenceSecondsPerItem = 1;
+                SentenceSecondsPerItem = 10;
             }
         }
     }

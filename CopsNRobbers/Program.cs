@@ -5,19 +5,20 @@ namespace CopsNRobbers
 {
     internal class Program
     {
+        public static int sleepy = 100;
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
 
             bool pacMan = false; // Toggles bounce / pacman
-            // City.cs/city/PutMapOnLayer to switch map
-
+            
+            int cityFilled = 0;      //  <----------  switch map  0=bars, 1=city, 2=clear
             // ---- City Size ---- //
             int cityWidth = 102;
             int cityHeight = 40;
             int cityDepth = 10;
             // ------------------- //
-            Gfx.SplashScreen(20,12);  // ----------------------------- SPLASH ---------------------------
+//            Gfx.SplashScreen(20,12);  // ----------------------------- SPLASH ---------------------------
             Console.SetBufferSize((200), 50);
             Console.SetWindowSize((200), 50);
             int cityLeftStartCentered = (Console.WindowWidth / 2) - (cityWidth / 2);
@@ -94,15 +95,39 @@ namespace CopsNRobbers
             personsList.Add(police01);
             personsList.Add(police02);
             personsList.Add(police03);
-            cityMap = City.PutMapOnLayer(cityHeight, cityWidth, cityDepth, cityMap);
+            cityMap = City.PutMapOnLayer(cityHeight, cityWidth, cityDepth, cityMap, cityFilled);
             sinCity.DrawCity(cityMap, cityLeftStartCentered, cityTopStartCentered);
 
             Console.SetCursorPosition(1, 9);
             Console.ForegroundColor = ConsoleColor.DarkGray;
-          //Console.WriteLine("░░░▒▒▒▒▒▒▓▓▓▓▓▓▓████ NEWS █████▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
-            Console.WriteLine("██████████████████░N░E░W░S░████▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
-            
-            Gfx.DrawTinyRobbery((Console.WindowWidth / 2) - 23, 34);
+            Console.WriteLine("███████████████████░N░E░W░S░███▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
+            Console.SetCursorPosition(152, 9);
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("░░░▒▒▒▒▒▒▓▓▓▓▓▓▓███░S░T░A░T░S░████████████████");
+
+
+            //Gfx.DrawTinyRobberyTxt((Console.WindowWidth / 2) - 29, 34);
+            //Thread.Sleep(1000);
+            //Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
+            //Gfx.DrawTinyRobbery((Console.WindowWidth / 2) - 20, 34);
+            //Thread.Sleep(1000);
+            //Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
+
+            //Gfx.DrawTinyBumTxt((Console.WindowWidth / 2) - 29, 34);
+            //Thread.Sleep(1000);
+            //Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
+            //Gfx.DrawTinyBum((Console.WindowWidth / 2) - 29, 34);
+            //Thread.Sleep(1000);
+            //Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
+
+            //Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
+            //Gfx.DrawTinyBustedTxt((Console.WindowWidth / 2) - 29, 34);
+            //Thread.Sleep(1000);
+            //Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
+            //Gfx.DrawTinyBusted((Console.WindowWidth / 2) - 19, 34);
+            //Thread.Sleep(1000);// Test CardGfx <---------------------------------- <------------------------------------
+
+
             while (true)
             {
                 //Console.ReadKey();
@@ -121,8 +146,8 @@ namespace CopsNRobbers
                         
                     }
                 }
-                Events.CitySummary(personsList, cityLeftStartCentered, cityTopStartCentered);
-                Thread.Sleep(10); // ----------------------------------------------  SLEEP -----------------------------------------------------
+                Events.CitySummary(personsList, cityLeftStartCentered, cityTopStartCentered, sleepy);
+                Thread.Sleep(sleepy); // ----------------------------------------------  SLEEP -----------------------------------------------------
             }
         }
         public static bool Toggle(bool pacMan, string[,,] cityMap)
@@ -141,8 +166,24 @@ namespace CopsNRobbers
                         {
                             pacMan = true;
                         }
-
                         break;
+                    case ConsoleKey.F2:
+                        if (sleepy >= 20)
+                        {
+                            sleepy -= 10;
+                        }
+                        else if (sleepy >= 5)
+                        {
+                            sleepy -= 1;
+                        }
+                        break;
+                    case ConsoleKey.F3:
+                        if (sleepy <= 300)
+                        {
+                            sleepy += 10;
+                        }
+                        break;
+
                     default:
                         break;
                 }

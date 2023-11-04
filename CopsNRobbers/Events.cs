@@ -51,24 +51,24 @@ namespace CopsNRobbers
                 ArrestThief((Police)actingPerson, (Thief)targetPerson); //Anropar ArrestTheif
             }
 
-            // ----------------------------------- FISTBUMP START ---------------------------------------------------
+            // ----------------------------------- FISTBUMP START - REFUSED (TOO MANY NEWS) --------------------------------------------------
 
-            else if (actingPerson is Citizen && targetPerson is Citizen && SamePlace)
-            {
-                Console.MoveBufferArea(movSrcLft, movSrcTop, movSrcWid, movSrcHgh, movDstLft, movDstTop);
-                Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
-                Console.SetCursorPosition((17 - (actingPerson.Name.Length / 2)), strtRow);
-                Console.WriteLine("Medborgaren " + actingPerson.Name);
-                Console.SetCursorPosition(7, strtRow + 1);
-                Console.WriteLine("gör en high five med medborgaren");
-                Console.SetCursorPosition((23 - (targetPerson.Name.Length / 2)), strtRow + 2);
-                Console.WriteLine(targetPerson.Name);
-                Console.SetCursorPosition(1, strtRow + 3);
-                Console.WriteLine();
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.SetCursorPosition(1, strtRow + 4);
-                Console.WriteLine("███████████████████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
-            }
+            //else if (actingPerson is Citizen && targetPerson is Citizen && SamePlace)
+            //{
+                //Console.MoveBufferArea(movSrcLft, movSrcTop, movSrcWid, movSrcHgh, movDstLft, movDstTop);
+                //Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
+                //Console.SetCursorPosition((17 - (actingPerson.Name.Length / 2)), strtRow);
+                //Console.WriteLine("Medborgaren " + actingPerson.Name);
+                //Console.SetCursorPosition(7, strtRow + 1);
+                //Console.WriteLine("gör en high five med medborgaren");
+                //Console.SetCursorPosition((23 - (targetPerson.Name.Length / 2)), strtRow + 2);
+                //Console.WriteLine(targetPerson.Name);
+                //Console.SetCursorPosition(1, strtRow + 3);
+                //Console.WriteLine();
+                //Console.ForegroundColor = ConsoleColor.DarkGray;
+                //Console.SetCursorPosition(1, strtRow + 4);
+                //Console.WriteLine("███████████████████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
+            //}
 
             // ----------------------------------- ARREST BUM START -------------------------------------------------
 
@@ -95,10 +95,10 @@ namespace CopsNRobbers
                 RobbedNumber++;
                 Console.MoveBufferArea(movSrcLft, movSrcTop, movSrcWid, movSrcHgh, movDstLft, movDstTop);
                 Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
-                Console.SetCursorPosition((17 - (citizen.Name.Length / 2)), strtRow);
-                Console.WriteLine("Medborgaren " + citizen.Name);
-                Console.SetCursorPosition(17, strtRow + 1);
-                Console.WriteLine("har rånats av");
+                Console.SetCursorPosition((18 - (citizen.Name.Length / 2)), strtRow);
+                Console.WriteLine("The citizen " + citizen.Name);
+                Console.SetCursorPosition(15, strtRow + 1);
+                Console.WriteLine("has been robbed by");
                 Console.SetCursorPosition((23 - (thief.Name.Length / 2)), strtRow + 2);
                 Console.WriteLine(thief.Name);
                 Console.SetCursorPosition(1, strtRow + 3);
@@ -111,7 +111,13 @@ namespace CopsNRobbers
                 string stolenItem = citizen.Belongings[removeAtIndex];
                 citizen.Belongings.RemoveAt(removeAtIndex);
                 thief.Stolen.Add(stolenItem);
-
+                Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
+                Gfx.DrawTinyRobberyTxt((Console.WindowWidth / 2) - 29, 34);
+                Thread.Sleep(1000);
+                Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
+                Gfx.DrawTinyRobbery((Console.WindowWidth / 2) - 20, 34);
+                Thread.Sleep(2000);
+                Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
             }
         }
 
@@ -124,9 +130,9 @@ namespace CopsNRobbers
                 Console.MoveBufferArea(movSrcLft, movSrcTop, movSrcWid, movSrcHgh, movDstLft, movDstTop);
                 Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
                 Console.SetCursorPosition((18 - (police.Name.Length / 2)), strtRow);
-                Console.WriteLine("Konstapel " + police.Name);
-                Console.SetCursorPosition(15, strtRow + 1);
-                Console.WriteLine("har fångat tjuven");
+                Console.WriteLine("Officer " + police.Name);
+                Console.SetCursorPosition(13, strtRow + 1);
+                Console.WriteLine("has caught the theief");
                 Console.SetCursorPosition((23 - (thief.Name.Length / 2)), strtRow + 2);
                 Console.WriteLine(thief.Name);
                 Console.SetCursorPosition(1, strtRow + 3);
@@ -139,6 +145,14 @@ namespace CopsNRobbers
                 thief.Stolen.Clear();
                 thief.IsArrested = true;
                 thief.XPos = rnd.Next(1, 20); thief.YPos = rnd.Next(27, 38);
+                Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
+                Gfx.DrawTinyBustedTxt((Console.WindowWidth / 2) - 29, 34);
+                Thread.Sleep(1000);
+                Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
+                Gfx.DrawTinyBusted((Console.WindowWidth / 2) - 19, 34);
+                Thread.Sleep(2000);
+                Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
+
             }
         }
 
@@ -149,10 +163,10 @@ namespace CopsNRobbers
             {
                 Console.MoveBufferArea(movSrcLft, movSrcTop, movSrcWid, movSrcHgh, movDstLft, movDstTop);
                 Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
-                Console.SetCursorPosition((18 - (police.Name.Length / 2)), strtRow);
-                Console.WriteLine("Konstapel " + police.Name);
-                Console.SetCursorPosition(17, strtRow + 1);
-                Console.WriteLine("har förpassat");
+                Console.SetCursorPosition((17 - (police.Name.Length / 2)), strtRow);
+                Console.WriteLine("Officer " + police.Name);
+                Console.SetCursorPosition(12, strtRow + 1);
+                Console.WriteLine("has dealt with the bum");
                 Console.SetCursorPosition((23 - (citizen.Name.Length / 2)), strtRow + 2);
                 Console.WriteLine(citizen.Name);
                 Console.SetCursorPosition(1, strtRow + 3);
@@ -164,14 +178,21 @@ namespace CopsNRobbers
                 citizen.Woke = true;
                 citizen.XPos = rnd.Next(82, 101); 
                 citizen.YPos = rnd.Next(27, 38);
+                Gfx.DrawTinyBumTxt((Console.WindowWidth / 2) - 29, 34);
+                Thread.Sleep(1000);
+                Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
+                Gfx.DrawTinyBum((Console.WindowWidth / 2) - 29, 34);
+                Thread.Sleep(2000);
+                Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
             }
         }
 
-        public static void CitySummary(List<Person> personsList, int cityLeftStartCentered, int cityTopStartCentered)
+        public static void CitySummary(List<Person> personsList, int cityLeftStartCentered, int cityTopStartCentered, int sleepy)
         {
-            //Console.WriteLine("______________________________________________________________________________________ ");
-            Console.SetCursorPosition(160, 1);
-            Console.WriteLine($"Antal rån: {RobbedNumber}");
+            
+            Console.SetCursorPosition(167, 11);
+            Console.ForegroundColor= ConsoleColor.White;
+            Console.WriteLine($"Total robberies: \t{RobbedNumber}");
             
             int arrested = 0;
             int bums = 0;
@@ -189,12 +210,12 @@ namespace CopsNRobbers
                     // --------------  Info  ----------------
                     Console.MoveBufferArea(movSrcLft, movSrcTop, movSrcWid, movSrcHgh, movDstLft, movDstTop);
                     Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
-                    Console.SetCursorPosition((20 - (thief.Name.Length / 2)), strtRow);
-                    Console.WriteLine("Tjuven " + thief.Name);
-                    Console.SetCursorPosition(13, strtRow + 1);
-                    Console.WriteLine("kommer ut ur fängelset");
+                    Console.SetCursorPosition((17 - (thief.Name.Length / 2)), strtRow);
+                    Console.WriteLine("The thief " + thief.Name);
+                    Console.SetCursorPosition(15, strtRow + 1);
+                    Console.WriteLine("gets out of prison");
                     Console.SetCursorPosition(15 , strtRow + 2);
-                    Console.WriteLine("efter sitt straff");
+                    Console.WriteLine("after the sentence");
                     Console.SetCursorPosition(1, strtRow + 3);
                     Console.WriteLine();
                     Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -219,12 +240,14 @@ namespace CopsNRobbers
                 }
 
             }
-            Console.SetCursorPosition(160, 2);
-            Console.WriteLine($"Antal gripna tjuvar: {arrested}");
-            Console.SetCursorPosition(160, 3);
-            Console.WriteLine($"Antal tjuvar på fri fot: {free}");
-            Console.SetCursorPosition(160, 4);
-            Console.WriteLine($"Antal fattig-Greger-jon: {bums}");
+            Console.SetCursorPosition(167, 12);
+            Console.WriteLine($"Thieves arrested: \t{arrested}");
+            Console.SetCursorPosition(167, 13);
+            Console.WriteLine($"Thieves roaming: \t{free}");
+            Console.SetCursorPosition(167, 14);
+            Console.WriteLine($"Caught bums: \t\t{bums}");
+            Console.SetCursorPosition(167, 16);
+            Console.WriteLine($"Delay: \t\t{sleepy}   ");
 
         }
 
