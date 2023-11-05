@@ -18,7 +18,7 @@ namespace CopsNRobbers
         public int Top { get; set; }
         public bool pacMan { get; set; } = false;
         public string[,,] CityArray { get; set; }
-        //private List<Person> people = new List<Person>();
+        
 
         public City(int width, int heigth, int depth)
         {
@@ -41,29 +41,6 @@ namespace CopsNRobbers
             return cityArray;
 
         }
-        //public static void PutCityFrame(string[,,] cityMap, int cityHeight, int cityWidth, int cityDepth) // To Bottom Layer
-        //{
-        //    int leftStart = (Console.WindowWidth / 2) - (cityWidth / 2);
-        //    int topStart = (Console.WindowHeight / 2) - (cityHeight / 2);
-        //    int putLayer = cityMap.GetLength(2) - 1; // Bottom Layer
-
-        //    for (int i = 0; i < cityWidth; i++)
-        //    {
-        //        cityMap[0, i, putLayer] = "▒";
-        //    }
-        //    for (int i = 0; i < cityHeight; i++)
-        //    {
-        //        cityMap[i, 0, putLayer] = "▒";
-        //    }
-        //    for (int i = 0; i < cityHeight; i++)
-        //    {
-        //        cityMap[i, cityMap.GetLength(1) - 1, putLayer] = "▒";
-        //    }
-        //    for (int i = 0; i < cityWidth; i++)
-        //    {
-        //        cityMap[cityHeight - 1, i, putLayer] = "▒";
-        //    }
-        //}
         public string[,,] FillCity(string[,,] cityMap) // Initialize layers
         {
             int xInt = 0;
@@ -148,10 +125,50 @@ namespace CopsNRobbers
             string mapLayer30 = ""; string mapLayer31 = ""; string mapLayer32 = ""; string mapLayer33 = ""; string mapLayer34 = ""; string mapLayer35 = ""; string mapLayer36 = ""; string mapLayer37 = ""; string mapLayer38 = ""; string mapLayer39 = "";
 
             //
-
-            //cityFilled = 1;
-
-            if (cityFilled == 0)
+            if (cityFilled == 1)
+            {
+                mapLayer00 = "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░S░I░N░▒░C░I░T░Y░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"; // 00
+                mapLayer01 = "▒                                                                                                    ▒"; // 01
+                mapLayer02 = "▒                                                                                                    ▒"; // 02
+                mapLayer03 = "▒                                                                                                    ▒"; // 03
+                mapLayer04 = "▒                                                                                                    ▒"; // 04
+                mapLayer05 = "▒                                                                                                    ▒"; // 05
+                mapLayer06 = "▒                                                                                                    ▒"; // 06
+                mapLayer07 = "▒                                                                                                    ▒"; // 07
+                mapLayer08 = "▒                                                                                                    ▒"; // 08
+                mapLayer09 = "▒                                                                                                    ▒"; // 09
+                mapLayer10 = "▒                                                                                                    ▒"; // 10
+                mapLayer11 = "▒                                                                                                    ▒"; // 11
+                mapLayer12 = "▒                                                                                                    ▒"; // 12
+                mapLayer13 = "▒                                                                                                    ▒"; // 13
+                mapLayer14 = "▒                                                                                                    ▒"; // 14
+                mapLayer15 = "▒                                                                                                    ▒"; // 15
+                mapLayer16 = "▒                                                                                                    ▒"; // 16
+                mapLayer17 = "▒                                                                                                    ▒"; // 17
+                mapLayer18 = "▒                                                                                                    ▒"; // 18
+                mapLayer19 = "▒                                                                                                    ▒"; // 19
+                mapLayer20 = "▒                                                                                                    ▒"; // 20
+                mapLayer21 = "▒                                                                                                    ▒"; // 21
+                mapLayer22 = "▒                                                                                                    ▒"; // 22
+                mapLayer23 = "▒                                                                                                    ▒"; // 23
+                mapLayer24 = "▒                                                                                                    ▒"; // 24
+                mapLayer25 = "▒                                                                                                    ▒"; // 25
+                mapLayer26 = "▒▒▒▒▒▒░J░A░I░L░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░P░O░V░E░R░T░Y░▒▒▒▒"; // 26
+                mapLayer27 = "▒                    ▒                                                          ▒                    ▒"; // 27
+                mapLayer28 = "▒                    ▒                                                          ▒                    ▒"; // 28
+                mapLayer29 = "▒                    ▒                                                          ▒                    ▒"; // 29
+                mapLayer30 = "▒                    ▒                                                          ▒                    ▒"; // 30
+                mapLayer31 = "▒                    ▒                                                          ▒                    ▒"; // 31
+                mapLayer32 = "▒                    ▒                                                          ▒                    ▒"; // 32
+                mapLayer33 = "▒                    ▒                                                          ▒                    ▒"; // 33
+                mapLayer34 = "▒                    ▒                                                          ▒                    ▒"; // 34
+                mapLayer35 = "▒                    ▒                                                          ▒                    ▒"; // 35
+                mapLayer36 = "▒                    ▒                                                          ▒                    ▒"; // 36
+                mapLayer37 = "▒                    ▒                                                          ▒                    ▒"; // 37
+                mapLayer38 = "▒                    ▒                                                          ▒                    ▒"; // 38
+                mapLayer39 = "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"; // 39
+            }
+            if (cityFilled == 2)
             {
                 mapLayer00 = "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░S░I░N░▒░C░I░T░Y░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"; // 00
                 mapLayer01 = "▒                                                                                                    ▒"; // 01
@@ -193,11 +210,10 @@ namespace CopsNRobbers
                 mapLayer37 = "▒                    ▒                                                          ▒                    ▒"; // 37
                 mapLayer38 = "▒                    ▒                                                          ▒                    ▒"; // 38
                 mapLayer39 = "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"; // 39
-               //            "         1         2         3         4         5         6         7         8         9         0  ", "█▒▓",
-               //            "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓2▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓0▓", // 00
             }
-            if (cityFilled == 1)
+            if (cityFilled == 3)
             {
+                //             123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 1
                 mapLayer00 = "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░S░I░N░▒░C░I░T░Y░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"; // 00
                 mapLayer01 = "▒                                                                                                    ▒"; // 01
                 mapLayer02 = "▒                                                                                                    ▒"; // 02
@@ -241,49 +257,7 @@ namespace CopsNRobbers
 
             }
 
-            if (cityFilled == 2)
-            {
-                mapLayer00 = "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░S░I░N░▒░C░I░T░Y░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"; // 00
-                mapLayer01 = "▒                                                                                                    ▒"; // 01
-                mapLayer02 = "▒                                                                                                    ▒"; // 02
-                mapLayer03 = "▒                                                                                                    ▒"; // 03
-                mapLayer04 = "▒                                                                                                    ▒"; // 04
-                mapLayer05 = "▒                                                                                                    ▒"; // 05
-                mapLayer06 = "▒                                                                                                    ▒"; // 06
-                mapLayer07 = "▒                                                                                                    ▒"; // 07
-                mapLayer08 = "▒                                                                                                    ▒"; // 08
-                mapLayer09 = "▒                                                                                                    ▒"; // 09
-                mapLayer10 = "▒                                                                                                    ▒"; // 10
-                mapLayer11 = "▒                                                                                                    ▒"; // 11
-                mapLayer12 = "▒                                                                                                    ▒"; // 12
-                mapLayer13 = "▒                                                                                                    ▒"; // 13
-                mapLayer14 = "▒                                                                                                    ▒"; // 14
-                mapLayer15 = "▒                                                                                                    ▒"; // 15
-                mapLayer16 = "▒                                                                                                    ▒"; // 16
-                mapLayer17 = "▒                                                                                                    ▒"; // 17
-                mapLayer18 = "▒                                                                                                    ▒"; // 18
-                mapLayer19 = "▒                                                                                                    ▒"; // 19
-                mapLayer20 = "▒                                                                                                    ▒"; // 20
-                mapLayer21 = "▒                                                                                                    ▒"; // 21
-                mapLayer22 = "▒                                                                                                    ▒"; // 22
-                mapLayer23 = "▒                                                                                                    ▒"; // 23
-                mapLayer24 = "▒                                                                                                    ▒"; // 24
-                mapLayer25 = "▒                                                                                                    ▒"; // 25
-                mapLayer26 = "▒▒▒▒▒▒░J░A░I░L░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░P░O░V░E░R░T░Y░▒▒▒▒"; // 26
-                mapLayer27 = "▒                    ▒                                                          ▒                    ▒"; // 27
-                mapLayer28 = "▒                    ▒                                                          ▒                    ▒"; // 28
-                mapLayer29 = "▒                    ▒                                                          ▒                    ▒"; // 29
-                mapLayer30 = "▒                    ▒                                                          ▒                    ▒"; // 30
-                mapLayer31 = "▒                    ▒                                                          ▒                    ▒"; // 31
-                mapLayer32 = "▒                    ▒                                                          ▒                    ▒"; // 32
-                mapLayer33 = "▒                    ▒                                                          ▒                    ▒"; // 33
-                mapLayer34 = "▒                    ▒                                                          ▒                    ▒"; // 34
-                mapLayer35 = "▒                    ▒                                                          ▒                    ▒"; // 35
-                mapLayer36 = "▒                    ▒                                                          ▒                    ▒"; // 36
-                mapLayer37 = "▒                    ▒                                                          ▒                    ▒"; // 37
-                mapLayer38 = "▒                    ▒                                                          ▒                    ▒"; // 38
-                mapLayer39 = "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"; // 39
-            }
+
 
             List<string> layerList = new List<string>();
             layerList.Add(mapLayer00);
@@ -574,6 +548,7 @@ namespace CopsNRobbers
             return prisonArray;
         } // toggle cityFilled to fill or clear map
 
+        //public 
     }
 }
 

@@ -239,8 +239,6 @@ namespace CopsNRobbers
         {
             int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
 
-            // Switch comment to change between set position or centered, here, in method Person.PlacePerson and Program.cs
-            // int topStartCentered = (Console.WindowHeight / 2) - (cityMap.GetLength(0) / 2);
             int topStartCentered = 7;
 
             cityMap[person.YPos, person.XPos, person.DPos] = " ";
@@ -252,8 +250,6 @@ namespace CopsNRobbers
         {
             int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
 
-            // Switch comment to change between set position or centered, here, in method Person.ClearPerson and Program.cs
-            // int topStartCentered = (Console.WindowHeight / 2) - (cityMap.GetLength(0) / 2);
             int topStartCentered = 7;
 
             cityMap[person.YPos, person.XPos, person.DPos] = person.Symbol;
@@ -352,99 +348,99 @@ namespace CopsNRobbers
             }
             return okDir;
         }
-        public static bool CheckDirectionBackupOnlyBoundary(string[,,] cityMap, Person person, bool okDir)
-        {
-            //    switch (person.Direction)
-            //    {
-            //        case "N":
-            //            if (person.YPos >= 1)
-            //            {
-            //                okDir = true;
-            //            }
-            //            else
-            //            {
+        //public static bool CheckDirectionBackupOnlyBoundary(string[,,] cityMap, Person person, bool okDir)
+        //{
+        //    //    switch (person.Direction)
+        //    //    {
+        //    //        case "N":
+        //    //            if (person.YPos >= 1)
+        //    //            {
+        //    //                okDir = true;
+        //    //            }
+        //    //            else
+        //    //            {
 
-            //                okDir = false;
-            //            }
-            //            break; // OK
-            //        case "S":
-            //            if (cityMap[person.YPos + 1, person.XPos, cityMap.GetLength(2) - 1] == " ")
-            //            {
-            //                okDir = true;
-            //            }
-            //            else
-            //            {
-            //                okDir = false;
-            //            }
-            //            break; // OK
-            //        case "E":
-            //            if (cityMap[person.YPos, person.XPos + 1, cityMap.GetLength(2) - 1] == " ")
-            //            {
-            //                okDir = true;
-            //            }
-            //            else
-            //            {
-            //                okDir = false;
-            //            }
-            //            break; // OK
-            //        case "W":
-            //            if (person.XPos >= 1)
-            //            {
-            //                okDir = true;
-            //            }
-            //            else
-            //            {
-            //                okDir = false;
-            //            }
-            //            break; // OK
+        //    //                okDir = false;
+        //    //            }
+        //    //            break; // OK
+        //    //        case "S":
+        //    //            if (cityMap[person.YPos + 1, person.XPos, cityMap.GetLength(2) - 1] == " ")
+        //    //            {
+        //    //                okDir = true;
+        //    //            }
+        //    //            else
+        //    //            {
+        //    //                okDir = false;
+        //    //            }
+        //    //            break; // OK
+        //    //        case "E":
+        //    //            if (cityMap[person.YPos, person.XPos + 1, cityMap.GetLength(2) - 1] == " ")
+        //    //            {
+        //    //                okDir = true;
+        //    //            }
+        //    //            else
+        //    //            {
+        //    //                okDir = false;
+        //    //            }
+        //    //            break; // OK
+        //    //        case "W":
+        //    //            if (person.XPos >= 1)
+        //    //            {
+        //    //                okDir = true;
+        //    //            }
+        //    //            else
+        //    //            {
+        //    //                okDir = false;
+        //    //            }
+        //    //            break; // OK
 
-            //        case "NE":
-            //            if ((person.YPos >= 1) && (person.XPos <= cityMap.GetLength(1) - 2))
-            //            {
-            //                okDir = true;
-            //            }
-            //            else
-            //            {
-            //                okDir = false;
-            //            }
-            //            break;
-            //        case "SE":
-            //            if ((person.YPos <= cityMap.GetLength(0) - 2) && (person.XPos <= cityMap.GetLength(1) - 2))
-            //            {
-            //                okDir = true;
-            //            }
-            //            else
-            //            {
-            //                okDir = false;
-            //            }
-            //            break;
-            //        case "NW":
-            //            if ((person.YPos >= 1) && (person.XPos >= 1))
-            //            {
-            //                okDir = true;
-            //            }
-            //            else
-            //            {
-            //                okDir = false;
-            //            }
-            //            break;
-            //        case "SW":
-            //            if ((person.YPos <= cityMap.GetLength(0) - 2) && (person.XPos >= 1))
-            //            {
-            //                okDir = true;
-            //            }
-            //            else
-            //            {
-            //                okDir = false;
-            //            }
-            //            break;
+        //    //        case "NE":
+        //    //            if ((person.YPos >= 1) && (person.XPos <= cityMap.GetLength(1) - 2))
+        //    //            {
+        //    //                okDir = true;
+        //    //            }
+        //    //            else
+        //    //            {
+        //    //                okDir = false;
+        //    //            }
+        //    //            break;
+        //    //        case "SE":
+        //    //            if ((person.YPos <= cityMap.GetLength(0) - 2) && (person.XPos <= cityMap.GetLength(1) - 2))
+        //    //            {
+        //    //                okDir = true;
+        //    //            }
+        //    //            else
+        //    //            {
+        //    //                okDir = false;
+        //    //            }
+        //    //            break;
+        //    //        case "NW":
+        //    //            if ((person.YPos >= 1) && (person.XPos >= 1))
+        //    //            {
+        //    //                okDir = true;
+        //    //            }
+        //    //            else
+        //    //            {
+        //    //                okDir = false;
+        //    //            }
+        //    //            break;
+        //    //        case "SW":
+        //    //            if ((person.YPos <= cityMap.GetLength(0) - 2) && (person.XPos >= 1))
+        //    //            {
+        //    //                okDir = true;
+        //    //            }
+        //    //            else
+        //    //            {
+        //    //                okDir = false;
+        //    //            }
+        //    //            break;
 
 
-            //        default:
-            //            break;
-            //    }
-            return okDir;
-        }
+        //    //        default:
+        //    //            break;
+        //    //    }
+        //    return okDir;
+        //}
         public static string[,,] ChangeDirection(string[,,] cityMap, Person person, bool pacMan)
         {
             //bool pacMan = true;
@@ -516,18 +512,18 @@ namespace CopsNRobbers
 
             //                                  --- Scope END ---
             #endregion
-            int teleportSouth = 25;
             int teleportNorth = 1;
-            int teleportWest = 1;
+            int teleportSouth = 25;
             int teleportEast = 100;
+            int teleportWest = 1;
             int povertyNorth = 27;
             int povertySouth = 38;
-            int povertyWest = 81;
             int povertyEast = 100;
+            int povertyWest = 81;
             int prisonNorth = 27;
             int prisonSouth = 38;
-            int prisonWest = 1;
             int prisonEast = 20;
+            int prisonWest = 1;
             // int cityWidth = 102;
             // int cityHeight = 40;
             switch (person.Direction)
@@ -586,15 +582,15 @@ namespace CopsNRobbers
                     {
                         if (person is Citizen && ((Citizen)person).Woke == true)
                         {
-                            person.YPos = povertyWest;
+                            person.XPos = povertyWest;
                         }
                         else if (person is Thief && ((Thief)person).IsArrested == true)
                         {
-                            person.YPos = prisonWest;
+                            person.XPos = prisonWest;
                         }
                         else
                         {
-                            person.YPos = teleportWest;
+                            person.XPos = teleportWest;
                         }
                     }
 
@@ -609,15 +605,15 @@ namespace CopsNRobbers
                     {
                         if (person is Citizen && ((Citizen)person).Woke == true)
                         {
-                            person.YPos = povertyEast;
+                            person.XPos = povertyEast;
                         }
                         else if (person is Thief && ((Thief)person).IsArrested == true)
                         {
-                            person.YPos = prisonEast;
+                            person.XPos = prisonEast;
                         }
                         else
                         {
-                            person.YPos = teleportEast;
+                            person.XPos = teleportEast;
                         }
                     }
                     break;
@@ -1024,5 +1020,29 @@ namespace CopsNRobbers
             }
             return cityMap;
         } // Set pacMan to toggle bounce-style or Pac Man-teleport
+
+        public static string DirectionStr()
+        {
+            Random rnd = new Random();
+            string directionStr = "";
+            string[] directionString =
+            {
+                "N",
+                "NE",
+                "NE",
+                "E",
+                "SE",
+                "SE",
+                "S",
+                "SW",
+                "SW",
+                "W",
+                "NW",
+                "NW"
+            };
+            directionStr = directionString[rnd.Next(0,12)];
+        return directionStr;
+        }
+
     }
 }

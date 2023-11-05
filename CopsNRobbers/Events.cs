@@ -95,17 +95,17 @@ namespace CopsNRobbers
                 RobbedNumber++;
                 Console.MoveBufferArea(movSrcLft, movSrcTop, movSrcWid, movSrcHgh, movDstLft, movDstTop);
                 Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
-                Console.SetCursorPosition((18 - (citizen.Name.Length / 2)), strtRow);
-                Console.WriteLine("The citizen " + citizen.Name);
-                Console.SetCursorPosition(15, strtRow + 1);
-                Console.WriteLine("has been robbed by");
-                Console.SetCursorPosition((23 - (thief.Name.Length / 2)), strtRow + 2);
-                Console.WriteLine(thief.Name);
+                Console.SetCursorPosition(((47 - citizen.Name.Length) / 2), strtRow);
+                Console.Write(citizen.Name);
+                Console.SetCursorPosition(14, strtRow + 1);
+                Console.Write("has been robbed by");
+                Console.SetCursorPosition(((47 - thief.Name.Length) / 2), strtRow + 2);
+                Console.Write(thief.Name);
                 Console.SetCursorPosition(1, strtRow + 3);
-                Console.WriteLine();
+                Console.Write("");
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.SetCursorPosition(1, strtRow + 4);
-                Console.WriteLine("███████████████████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
+                Console.Write("███████████████████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
                 Random random = new Random();
                 int removeAtIndex = random.Next(citizen.Belongings.Count);
                 string stolenItem = citizen.Belongings[removeAtIndex];
@@ -113,10 +113,10 @@ namespace CopsNRobbers
                 thief.Stolen.Add(stolenItem);
                 Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
                 Gfx.DrawTinyRobberyTxt((Console.WindowWidth / 2) - 29, 34);
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
                 Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
                 Gfx.DrawTinyRobbery((Console.WindowWidth / 2) - 20, 34);
-                Thread.Sleep(2000);
+                Thread.Sleep(1000);
                 Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
             }
         }
@@ -129,17 +129,18 @@ namespace CopsNRobbers
             {
                 Console.MoveBufferArea(movSrcLft, movSrcTop, movSrcWid, movSrcHgh, movDstLft, movDstTop);
                 Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
-                Console.SetCursorPosition((18 - (police.Name.Length / 2)), strtRow);
-                Console.WriteLine("Officer " + police.Name);
+                Console.SetCursorPosition(((47 - police.Name.Length) / 2), strtRow);
+                Console.Write(police.Name);
                 Console.SetCursorPosition(13, strtRow + 1);
-                Console.WriteLine("has caught the theief");
-                Console.SetCursorPosition((23 - (thief.Name.Length / 2)), strtRow + 2);
-                Console.WriteLine(thief.Name);
+                Console.Write("has caught the theief");
+                Console.SetCursorPosition(((47 - thief.Name.Length) / 2), strtRow + 2);
+                Console.Write(thief.Name);
                 Console.SetCursorPosition(1, strtRow + 3);
-                Console.WriteLine();
+                Console.Write("");
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.SetCursorPosition(1, strtRow + 4);
-                Console.WriteLine("███████████████████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
+                //                  123456789 123456789 123456789 123456789 123456
+                Console.Write("███████████████████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
                 thief.LeavingPrison = DateTime.Now.AddSeconds((thief.SentenceSecondsPerItem * thief.Stolen.Count));
                 police.Confiscated.AddRange(thief.Stolen);
                 thief.Stolen.Clear();
@@ -147,10 +148,10 @@ namespace CopsNRobbers
                 thief.XPos = rnd.Next(1, 20); thief.YPos = rnd.Next(27, 38);
                 Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
                 Gfx.DrawTinyBustedTxt((Console.WindowWidth / 2) - 29, 34);
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
                 Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
                 Gfx.DrawTinyBusted((Console.WindowWidth / 2) - 19, 34);
-                Thread.Sleep(2000);
+                Thread.Sleep(1500);
                 Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
 
             }
@@ -163,40 +164,37 @@ namespace CopsNRobbers
             {
                 Console.MoveBufferArea(movSrcLft, movSrcTop, movSrcWid, movSrcHgh, movDstLft, movDstTop);
                 Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
-                Console.SetCursorPosition((17 - (police.Name.Length / 2)), strtRow);
-                Console.WriteLine("Officer " + police.Name);
+                Console.SetCursorPosition(((47 - police.Name.Length) / 2), strtRow);
+                Console.Write(police.Name);
                 Console.SetCursorPosition(12, strtRow + 1);
-                Console.WriteLine("has dealt with the bum");
-                Console.SetCursorPosition((23 - (citizen.Name.Length / 2)), strtRow + 2);
-                Console.WriteLine(citizen.Name);
+                Console.Write("has dealt with the bum");
+                Console.SetCursorPosition(((47 - citizen.Name.Length) / 2), strtRow + 2);
+                Console.Write(citizen.Name);
                 Console.SetCursorPosition(1, strtRow + 3);
-                Console.WriteLine();
+                Console.Write("");
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.SetCursorPosition(1, strtRow + 4);
-                Console.WriteLine("███████████████████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
+                Console.Write("███████████████████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
 
                 citizen.Woke = true;
                 citizen.XPos = rnd.Next(82, 101); 
                 citizen.YPos = rnd.Next(27, 38);
                 Gfx.DrawTinyBumTxt((Console.WindowWidth / 2) - 29, 34);
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
                 Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
                 Gfx.DrawTinyBum((Console.WindowWidth / 2) - 29, 34);
-                Thread.Sleep(2000);
+                Thread.Sleep(1500);
                 Gfx.DrawTinyClear((Console.WindowWidth / 2) - 29, 34);
             }
         }
 
-        public static void CitySummary(List<Person> personsList, int cityLeftStartCentered, int cityTopStartCentered, int sleepy)
+        public static void CitySummary(List<Person> personsList, int cityLeftStartCentered, int cityTopStartCentered, int sleepy, int citizensTotal, int thievesTotal, int copsTotal, bool pacMan, int sentencePerItem)
         {
-            
-            Console.SetCursorPosition(167, 11);
-            Console.ForegroundColor= ConsoleColor.White;
-            Console.WriteLine($"Total robberies: \t{RobbedNumber}");
             
             int arrested = 0;
             int bums = 0;
             int free = 0;
+            int stRow = 12;
             Random rnd = new Random();
             foreach (Thief thief in personsList.OfType<Thief>()) 
             {
@@ -206,12 +204,13 @@ namespace CopsNRobbers
                     Console.SetCursorPosition(cityLeftStartCentered + thief.XPos, cityTopStartCentered + thief.YPos);
                     Console.Write(" ");
                     thief.XPos = 6;
-                    thief.YPos = 25;
+                    thief.YPos = 24;
+                    thief.Direction = "NE";
                     // --------------  Info  ----------------
                     Console.MoveBufferArea(movSrcLft, movSrcTop, movSrcWid, movSrcHgh, movDstLft, movDstTop);
                     Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
-                    Console.SetCursorPosition((17 - (thief.Name.Length / 2)), strtRow);
-                    Console.WriteLine("The thief " + thief.Name);
+                    Console.SetCursorPosition(((47 - thief.Name.Length) / 2), strtRow);
+                    Console.WriteLine(thief.Name);
                     Console.SetCursorPosition(15, strtRow + 1);
                     Console.WriteLine("gets out of prison");
                     Console.SetCursorPosition(15 , strtRow + 2);
@@ -240,14 +239,119 @@ namespace CopsNRobbers
                 }
 
             }
-            Console.SetCursorPosition(167, 12);
-            Console.WriteLine($"Thieves arrested: \t{arrested}");
-            Console.SetCursorPosition(167, 13);
-            Console.WriteLine($"Thieves roaming: \t{free}");
-            Console.SetCursorPosition(167, 14);
-            Console.WriteLine($"Caught bums: \t\t{bums}");
-            Console.SetCursorPosition(167, 16);
-            Console.WriteLine($"Delay: \t\t{sleepy}   ");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.SetCursorPosition(165, stRow);
+            Console.Write("Number of Citizens:  " + citizensTotal + "  ");
+            Console.SetCursorPosition(165, stRow + 1);
+            Console.Write("Number of Thieves:\t  " + thievesTotal + "  ");
+            Console.SetCursorPosition(165, stRow + 2);
+            Console.Write("Number of Police:\t  " + copsTotal + "  ");
+            Console.SetCursorPosition(165, stRow + 3);
+            Console.Write("");
+            Console.SetCursorPosition(165, stRow + 4);
+            Console.Write($"Total robberies: \t{RobbedNumber}  ");
+            Console.SetCursorPosition(165, stRow + 5);
+            Console.Write($"Thieves arrested: \t{arrested}  ");
+            Console.SetCursorPosition(165, stRow + 6);
+            Console.Write($"Thieves roaming: \t{free}  ");
+            Console.SetCursorPosition(165, stRow + 7);
+            Console.Write($"Bums locked in: \t{bums}  ");
+            Console.SetCursorPosition(165, stRow + 8);
+            Console.Write("");
+
+            if (pacMan == false)
+            {
+                Console.SetCursorPosition(165, stRow + 9);
+                Console.Write("F1: [Bounce] / Pac-Man");
+            }
+            else
+            {
+                Console.SetCursorPosition(165, stRow + 9);
+                Console.Write("F1: Bounce / [Pac-Man]");
+            }
+
+            Console.SetCursorPosition(165, stRow + 10);
+            Console.Write("F2: Slow Speed");
+            Console.SetCursorPosition(165, stRow + 11);
+            Console.Write("F3: Medium Speed");
+            Console.SetCursorPosition(165, stRow + 12);
+            Console.Write("F4: Fast Speed");
+            Console.SetCursorPosition(165, stRow + 13);
+            Console.Write("F5: Insane Speed");
+
+            if (sleepy == 100)
+            {
+                Console.SetCursorPosition(163, stRow + 10);
+                Console.Write("+");
+                Console.SetCursorPosition(163, stRow + 11);
+                Console.Write(" ");
+                Console.SetCursorPosition(163, stRow + 12);
+                Console.Write(" ");
+                Console.SetCursorPosition(163, stRow + 13);
+                Console.Write(" ");
+
+            }
+            else if (sleepy == 50)
+            {
+                Console.SetCursorPosition(163, stRow + 10);
+                Console.Write(" ");
+                Console.SetCursorPosition(163, stRow + 11);
+                Console.Write("+");
+                Console.SetCursorPosition(163, stRow + 12);
+                Console.Write(" ");
+                Console.SetCursorPosition(163, stRow + 13);
+                Console.Write(" ");
+            }
+            else if (sleepy == 20)
+            {
+                Console.SetCursorPosition(163, stRow + 10);
+                Console.Write(" ");
+                Console.SetCursorPosition(163, stRow + 11);
+                Console.Write(" ");
+                Console.SetCursorPosition(163, stRow + 12);
+                Console.Write("+");
+                Console.SetCursorPosition(163, stRow + 13);
+                Console.Write(" ");
+            }
+            else if (sleepy == 0)
+            {
+                Console.SetCursorPosition(163, stRow + 10);
+                Console.Write(" ");
+                Console.SetCursorPosition(163, stRow + 11);
+                Console.Write(" ");
+                Console.SetCursorPosition(163, stRow + 12);
+                Console.Write(" ");
+                Console.SetCursorPosition(163, stRow + 13);
+                Console.Write("+");
+            }
+
+            Console.SetCursorPosition(165, stRow + 14);
+            Console.Write("");
+            Console.SetCursorPosition(165, stRow + 15);
+            Console.Write("1: Add Citizen");
+            Console.SetCursorPosition(165, stRow + 16);
+            Console.Write("2: Remove Citizen");
+            Console.SetCursorPosition(165, stRow + 17);
+            Console.Write("");
+            Console.SetCursorPosition(165, stRow + 18);
+            Console.Write("3: Add Thief");
+            Console.SetCursorPosition(165, stRow + 19);
+            Console.Write("4: Remove Thief");
+            Console.SetCursorPosition(165, stRow + 20);
+            Console.Write("");
+            Console.SetCursorPosition(165, stRow + 21);
+            Console.Write("5: Add Police");
+            Console.SetCursorPosition(165, stRow + 22);
+            Console.Write("6: Remove Police");
+
+
+            Console.SetCursorPosition(165, stRow + 24);
+            Console.Write("Sentence Per Item " + sentencePerItem + " sec  ");
+            Console.SetCursorPosition(165, stRow + 25);
+            Console.Write("7. Lower Sentence");
+            Console.SetCursorPosition(165, stRow + 26);
+            Console.Write("8. Raise Sentence");
 
         }
 

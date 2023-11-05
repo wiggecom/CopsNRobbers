@@ -8,29 +8,46 @@ namespace CopsNRobbers
 {
     public class Police : Person
     {
-        public override string Symbol => "☺";
+        public override string Symbol => "☻";
         public List<string> Confiscated { get; set; }
 
         public Police(int xPos, int yPos, int dPos, string direction, string name) : base(xPos, yPos, dPos, direction, name)
         {
             Confiscated = new List<string>();
         }
-        //public Cop(Random random) : base(random)
-        //{
-        //    Confiscated = new List<Item>();
-        //}
+        public static string PoliceName()
+        {
+            Random rnd = new Random();
+            string name = "";
+            string[] prefix =
+            {
+                "Officer ",
+                "Constaple ",
+                "Sergant ",
+                "Inspector ",
+                "Deputy ",
+                "Captain ",
+                "Lieutenant ",
+            };
 
-        //public override string CollidesWith(Person person, Random rnd)
-        //{
-        //    if (person is Thief && person.Inventory.Count > 0)
-        //    {
-        //        Inventory.AddRange(person.Inventory);
-        //        person.Inventory.Clear();
-        //        return Message.Arrest;
-        //    }
-
-        //    return null;
-        //}
+            string[] suffix =
+{
+                "Stevens",
+                "Anderson",
+                "Smith",
+                "Jones",
+                "Lopez",
+                "Miller",
+                "Taylor",
+                "Adams",
+                "Hill",
+                "Carter",
+                "Cooper",
+                "Gomez"
+            };
+            name = prefix[rnd.Next(0, prefix.Length)] + suffix[rnd.Next(0, suffix.Length)];
+            return name;
+        }
 
     }
 }

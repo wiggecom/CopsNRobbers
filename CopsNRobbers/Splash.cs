@@ -8,6 +8,60 @@ namespace CopsNRobbers
 {
     public class Splash
     {
+        public static int SelectMap()
+        {
+            int mapSelect = 0;
+            int centeredWidth = Console.WindowWidth / 2;
+            int posX = centeredWidth-48;
+            int ceneteredHeight = Console.WindowHeight / 2;
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.SetCursorPosition(posX, ceneteredHeight-6);
+
+            Console.WriteLine("██████████████████████████████  ██████████████████████████████  ██████████████████████████████");
+
+            Console.SetCursorPosition(posX, ceneteredHeight - 5);
+            Console.WriteLine("██░░░░░░░░░░░░░░░░░░░░░░░░░░██  ██░░░░░░░░░░░░░░░░░░░░░░░░░░██  ██░░░░░░░░░░░░░░░░░░░░░░░░░░██");
+            Console.SetCursorPosition(posX, ceneteredHeight - 4);
+            Console.WriteLine("██░░░░░░░░░░░░░░░░░░░░░░░░░░██  ██░░░░░░░░░░░░░█████░░░░░░░░██  ██░░██░░██░░░░░░░░░░██░░██░░██");
+            Console.SetCursorPosition(posX, ceneteredHeight - 3);
+            Console.WriteLine("██░░░░░░░░░░░░░░░░░░░░░░░░░░██  ██░░░░█░░░░░░░░░░░░░░░░░░░░░██  ██░░░░░░░░░░░░░░░░░░░░░░░░░░██");
+            Console.SetCursorPosition(posX, ceneteredHeight - 2);
+            Console.WriteLine("██░░░░░░░░░░░░░░░░░░░░░░░░░░██  ██░░░░█░░░░░░░░░░░░░░░░█░░░░██  ██░░██░░░░░░░░░░░░░░░░░░██░░██");
+            Console.SetCursorPosition(posX, ceneteredHeight - 1);
+            Console.WriteLine("██░░░░░░░░░░░░░░░░░░░░░░░░░░██  ██░░░░░░░░░░░░░░░░░░░░░█░░░░██  ██░░░░░░░░░░░░░░░░░░░░░░░░░░██");
+            Console.SetCursorPosition(posX, ceneteredHeight);
+            Console.WriteLine("██░░░░░░░░░░░░░░░░░░░░░░░░░░██  ██░░░░░░░░██████░░░░░░░░░░░░██  ██░░██░░██░░░░░░░░░░██░░██░░██");
+            Console.SetCursorPosition(posX, ceneteredHeight+1);
+            Console.WriteLine("██░░░░░░░░░░░░░░░░░░░░░░░░░░██  ██░░░░░░░░░░░░░░░░░░░░░░░░░░██  ██░░░░░░░░░░░░░░░░░░░░░░░░░░██");
+            Console.SetCursorPosition(posX, ceneteredHeight +2);
+            Console.WriteLine("██████████████████████████████  ██████████████████████████████  ██████████████████████████████");
+            Console.SetCursorPosition(posX, ceneteredHeight + 3);
+            Console.WriteLine();
+            Console.SetCursorPosition(posX, ceneteredHeight + 4);
+            Console.WriteLine("                                      Please select map");
+            Console.SetCursorPosition(posX, ceneteredHeight + 5);
+            Console.WriteLine();
+            Console.SetCursorPosition(posX, ceneteredHeight + 6);
+            Console.WriteLine("              1                                2                               3              ");
+
+            ConsoleKeyInfo key = Console.ReadKey(true);
+            switch (key.Key)
+            {
+                case ConsoleKey.D1:
+                    mapSelect = 1;
+                    break;
+                case ConsoleKey.D2:
+                    mapSelect = 2;
+                    break;
+                case ConsoleKey.D3:
+                    mapSelect = 3;
+                    break;
+                default:
+                    break;
+            }
+            Console.Clear();
+            return mapSelect;
+        }
         public static void SinCitySunSet(int posX, int posY)
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -786,33 +840,33 @@ namespace CopsNRobbers
     }
 }
 /*
-██████████████████████████████
-██░░░░░░░░░░░░░░░░░░░░░░░░░░██
-██░░██░░██░░░░░░░░░░██░░██░░██
-██░░░░░░░░░░░░░░░░░░░░░░░░░░██
-██░░██░░░░░░░░░░░░░░░░░░██░░██
-██░░░░░░░░░░░░░░░░░░░░░░░░░░██
-██░░██░░██░░░░░░░░░░██░░██░░██
-██░░░░░░░░░░░░░░░░░░░░░░░░░░██
-██████████████████████████████
 
-██████████████████████████████
-██░░░░░░░░░░░░░░░░░░░░░░░░░░██
-██░░░░░░░░░░░░░░░░░░░░░░░░░░██
-██░░░░░░░░░░░░░░░░░░░░░░░░░░██
-██░░░░░░░░░░░░░░░░░░░░░░░░░░██
-██░░░░░░░░░░░░░░░░░░░░░░░░░░██
-██░░░░░░░░░░░░░░░░░░░░░░░░░░██
-██░░░░░░░░░░░░░░░░░░░░░░░░░░██
-██████████████████████████████
 
-██████████████████████████████
-██░░░░░░░░░░░░░░░░░░░░░░░░░░██
-██░░░░░░░░░░░░░█████░░░░░░░░██
-██░░░░█░░░░░░░░░░░░░░░░░░░░░██
-██░░░░█░░░░░░░░░░░░░░░░█░░░░██
-██░░░░░░░░░░░░░░░░░░░░░█░░░░██
-██░░░░░░░░██████░░░░░░░░░░░░██
-██░░░░░░░░░░░░░░░░░░░░░░░░░░██
-██████████████████████████████
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  */

@@ -24,5 +24,36 @@ namespace CopsNRobbers
                 Woke = false;
             }
         }
+        public static string CitizenName()
+        {
+            Random rnd = new Random();
+            string name = "";
+            string[] prefix =
+            {
+                "Greger",
+                "Jon-Greger",
+                "Bengt-Greger",
+                "Sven-Greger",
+                "Lars-Greger",
+            };
+
+            string[] suffix =
+{
+                " the Dude",
+                "-Bro",
+                "-Man",
+                " Buddy",
+                " the Surfer",
+                " the Geek",
+                " the 1337",
+                " the Fan",
+                " the Rich",
+                " the Poor",
+                " the Happy",
+                " the Looser"
+            };
+            name = prefix[rnd.Next(0,prefix.Length)]+ suffix[rnd.Next(0, suffix.Length)];
+            return name;
+        }
     }
 }
