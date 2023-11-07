@@ -5,36 +5,37 @@ namespace CopsNRobbers
 {
     internal class Program
     {
-        public static int sleepy = 20;
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
 
-            bool pacMan = false; // Toggles bounce / pacman
-
+            bool pacMan = false; // Simulation starts with bounce-mode
 
             // ---- City Size ---- //
             int cityWidth = 102;
             int cityHeight = 40;
             int cityDepth = 10;
+
+            // ---- Misc Settings ---- //
             int citizensTotal = 3;
             int thievesTotal = 2;
             int copsTotal = 1;
             int sentencePerItem = 10;
-            // ------------------- //
-            Gfx.SplashScreen(20, 12);  // ----------------------------- SPLASH ---------------------------
-            Console.SetBufferSize((200), 50);
-            Console.SetWindowSize((200), 50);
-            int cityFilled = Splash.SelectMap();      //  <----------  switch map
-            int cityLeftStartCentered = (Console.WindowWidth / 2) - (cityWidth / 2);
-
-            // Switch comment to change between set position or centered, here, in method Person.ClearPerson and Person.PlacePerson
-            // int cityTopStartCentered = (Console.WindowHeight / 2) - (cityHeight / 2);
-            int cityTopStartCentered = 7; // - OVERRIDE HORIZONTAL CENTERING -
+            int sleepy = 20;
 
             Random rnd = new Random();
+            Events events = new Events();
+            List<Person> personsList = new List<Person>();
 
-            Events events = new Events(); //Skapar en instans av Events klassen
+            Splash.SplashScreen(20, 12);  // - SPLASH -
+            Console.SetBufferSize((200), 50);
+            Console.SetWindowSize((200), 50);
+
+            int cityFilled = Splash.SelectMap(); //  <- Map Selector
+            int cityLeftStartCentered = (Console.WindowWidth / 2) - (cityWidth / 2);
+            
+            // int cityTopStartCentered = (Console.WindowHeight / 2) - (cityHeight / 2);
+            int cityTopStartCentered = 7; // - Fixed location due to features -
 
             Gfx.DrawSinCity(cityTopStartCentered);
             City sinCity = new City(cityWidth, cityHeight, cityDepth);
@@ -43,10 +44,9 @@ namespace CopsNRobbers
             Gfx.LocalPeeps();
             Gfx.CityFrame(cityWidth, cityHeight, cityLeftStartCentered, cityTopStartCentered);
 
-            List<Person> personsList = new List<Person>();
-
             cityMap = City.PutMapOnLayer(cityHeight, cityWidth, cityDepth, cityMap, cityFilled);
 
+            #region Make Base Actors
             for (int i = 0; i < citizensTotal; i++)
             {
                 int charPosX = rnd.Next(18, 83);
@@ -65,20 +65,14 @@ namespace CopsNRobbers
                 int charPosY = rnd.Next(8, 18);
                 personsList.Add(new Police(charPosX, charPosY, 0, Person.DirectionStr(), Police.PoliceName()));
             }
+            #endregion
             sinCity.DrawCity(cityMap, cityLeftStartCentered, cityTopStartCentered);
 
-            Console.SetCursorPosition(1, 9);
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("███████████████████░N░E░W░S░███▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
-            Console.SetCursorPosition(152, 9);
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("░░░▒▒▒▒▒▒▓▓▓▓▓▓▓███░S░T░A░T░S░████████████████");
 
+            #region Main Loop
             while (true)
             {
-                //Console.ReadKey();
                 cityMap = Person.MovePeeps(cityMap, personsList, pacMan);
-                //pacMan = Toggle(pacMan, cityMap);
 
                 // Loopa genom befolkningen och hitta möten.
                 for (int i = 0; i < personsList.Count; i++)
@@ -94,7 +88,7 @@ namespace CopsNRobbers
                 }
                 Events.CitySummary(personsList, cityLeftStartCentered, cityTopStartCentered, sleepy, citizensTotal, thievesTotal, copsTotal, pacMan, sentencePerItem);
 
-
+                #region Read Keys
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey(true);
@@ -130,7 +124,7 @@ namespace CopsNRobbers
                             personsList.Add(new Citizen(charPosX, charPosY, 2, Person.DirectionStr(), Citizen.CitizenName()));
                             citizensTotal++;
                             break;
-                        case ConsoleKey.D2:
+                        case ConsoleKey.D5:
                             foreach (Person person in personsList)
                             {
                                 if (person is Citizen)
@@ -146,13 +140,13 @@ namespace CopsNRobbers
                                 }
                             }
                             break;
-                        case ConsoleKey.D3:
+                        case ConsoleKey.D2:
                             charPosX = rnd.Next(18, 83);
                             charPosY = rnd.Next(8, 18);
                             personsList.Add(new Thief(charPosX, charPosY, 1, Person.DirectionStr(), Thief.ThiefName(), sentencePerItem));
                             thievesTotal++;
                             break;
-                        case ConsoleKey.D4:
+                        case ConsoleKey.D6:
                             foreach (Person person in personsList)
                             {
                                 if (person is Thief)
@@ -168,13 +162,13 @@ namespace CopsNRobbers
                                 }
                             }
                             break;
-                        case ConsoleKey.D5:
+                        case ConsoleKey.D3:
                             charPosX = rnd.Next(18, 83);
                             charPosY = rnd.Next(8, 18);
                             personsList.Add(new Police(charPosX, charPosY, 0, Person.DirectionStr(), Police.PoliceName()));
                             copsTotal++;
                             break;
-                        case ConsoleKey.D6:
+                        case ConsoleKey.D7:
                             foreach (Person person in personsList)
                             {
                                 if (person is Police)
@@ -190,7 +184,7 @@ namespace CopsNRobbers
                                 }
                             }
                             break;
-                        case ConsoleKey.D7:
+                        case ConsoleKey.D9:
                             if (sentencePerItem >=40)
                             {
                                 sentencePerItem -= 10;
@@ -208,7 +202,7 @@ namespace CopsNRobbers
                                 sentencePerItem = 1;
                             }
                             break;
-                        case ConsoleKey.D8:
+                        case ConsoleKey.D0:
                             if (sentencePerItem < 60)
                             {
                                 if (sentencePerItem >= 30)
@@ -230,10 +224,11 @@ namespace CopsNRobbers
                     }
 
                 }
-
+                #endregion
 
                 Thread.Sleep(sleepy); // ----------------------------------------------  SLEEP -----------------------------------------------------
-            } 
+            }
+            #endregion
         }
     }
 }

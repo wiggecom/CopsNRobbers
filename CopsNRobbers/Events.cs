@@ -14,71 +14,66 @@ namespace CopsNRobbers
             public static int movDstLft = 1;
             public static int movDstTop = 17;
             public static int strtRow = 11;
-        // Statiska variabler för att hålla räkning på antalet rånade medborgare och gripna tjuvar.
-        private static int RobbedNumber = 0;
-        //private static int ArrestedNumber = 0;
 
-        //Encounter
+        private static int RobbedNumber = 0;
+
         Random rnd = new Random();
 
         public void Meeting(Person actingPerson, Person targetPerson)
         {
 
-            bool SamePlace = actingPerson.YPos == targetPerson.YPos && actingPerson.XPos == targetPerson.XPos; // Bool om personerna är på samma plats
-            // 1234567890123456789012345678901234567890123456 
-            //          1         2         3         4 
-
+            bool SamePlace = actingPerson.YPos == targetPerson.YPos && actingPerson.XPos == targetPerson.XPos;
 
             // ----------------------------------- ROBBERY START -------------------------------------------------------
 
-            if (actingPerson is Thief && targetPerson is Citizen && SamePlace) //Om medborgare träffar tjuv
+            if (actingPerson is Thief && targetPerson is Citizen && SamePlace)
             {
-                RobCitizen((Thief)actingPerson, (Citizen)targetPerson); //Anropa RobCitizen // Thief == actingPerson
+                RobCitizen((Thief)actingPerson, (Citizen)targetPerson); 
             }
-            else if (targetPerson is Thief && actingPerson is Citizen && SamePlace) //Om tjuv träffar medborgare
+            else if (targetPerson is Thief && actingPerson is Citizen && SamePlace) 
             {
-                RobCitizen((Thief)targetPerson, (Citizen)actingPerson); //Anropa RobCitizen // Thief == targetPerson
+                RobCitizen((Thief)targetPerson, (Citizen)actingPerson);
             }
 
             // ----------------------------------- ARREST START --------------------------------------------------------
 
-            else if (targetPerson is Police && actingPerson is Thief && SamePlace) //Om polis och tjuv är på samma plats
+            else if (targetPerson is Police && actingPerson is Thief && SamePlace)
             {
-                ArrestThief((Police)targetPerson, (Thief)actingPerson); //Anropar ArrestTheif
+                ArrestThief((Police)targetPerson, (Thief)actingPerson);
             }
-            else if (actingPerson is Police && targetPerson is Thief && SamePlace) //Om polis och tjuv är på samma plats
+            else if (actingPerson is Police && targetPerson is Thief && SamePlace)
             {
-                ArrestThief((Police)actingPerson, (Thief)targetPerson); //Anropar ArrestTheif
+                ArrestThief((Police)actingPerson, (Thief)targetPerson);
             }
-
+            #region FIstbump - Citizen vs Citizen
             // ----------------------------------- FISTBUMP START - REFUSED (TOO MANY NEWS) --------------------------------------------------
 
             //else if (actingPerson is Citizen && targetPerson is Citizen && SamePlace)
             //{
-                //Console.MoveBufferArea(movSrcLft, movSrcTop, movSrcWid, movSrcHgh, movDstLft, movDstTop);
-                //Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
-                //Console.SetCursorPosition((17 - (actingPerson.Name.Length / 2)), strtRow);
-                //Console.WriteLine("Medborgaren " + actingPerson.Name);
-                //Console.SetCursorPosition(7, strtRow + 1);
-                //Console.WriteLine("gör en high five med medborgaren");
-                //Console.SetCursorPosition((23 - (targetPerson.Name.Length / 2)), strtRow + 2);
-                //Console.WriteLine(targetPerson.Name);
-                //Console.SetCursorPosition(1, strtRow + 3);
-                //Console.WriteLine();
-                //Console.ForegroundColor = ConsoleColor.DarkGray;
-                //Console.SetCursorPosition(1, strtRow + 4);
-                //Console.WriteLine("███████████████████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
+            //Console.MoveBufferArea(movSrcLft, movSrcTop, movSrcWid, movSrcHgh, movDstLft, movDstTop);
+            //Console.ForegroundColor = (ConsoleColor)(rnd.Next(1, 15));
+            //Console.SetCursorPosition((17 - (actingPerson.Name.Length / 2)), strtRow);
+            //Console.WriteLine("Medborgaren " + actingPerson.Name);
+            //Console.SetCursorPosition(7, strtRow + 1);
+            //Console.WriteLine("gör en high five med medborgaren");
+            //Console.SetCursorPosition((23 - (targetPerson.Name.Length / 2)), strtRow + 2);
+            //Console.WriteLine(targetPerson.Name);
+            //Console.SetCursorPosition(1, strtRow + 3);
+            //Console.WriteLine();
+            //Console.ForegroundColor = ConsoleColor.DarkGray;
+            //Console.SetCursorPosition(1, strtRow + 4);
+            //Console.WriteLine("███████████████████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒░░░");
             //}
-
+            #endregion
             // ----------------------------------- ARREST BUM START -------------------------------------------------
 
-            else if (targetPerson is Police && actingPerson is Citizen && SamePlace) //Om polis och medborgare är på samma plats
+            else if (targetPerson is Police && actingPerson is Citizen && SamePlace)
             {
-                ArrestBum((Police)targetPerson, (Citizen)actingPerson); //Anropar ArrestBum
+                ArrestBum((Police)targetPerson, (Citizen)actingPerson);
             }
-            else if (actingPerson is Police && targetPerson is Citizen && SamePlace) //Om polis och medborgare är på samma plats
+            else if (actingPerson is Police && targetPerson is Citizen && SamePlace)
             {
-                ArrestBum((Police)actingPerson, (Citizen)targetPerson); //Anropar ArrestBum
+                ArrestBum((Police)actingPerson, (Citizen)targetPerson);
             }
 
             // ----------------------------------- ARREST BUM END ---------------------------------------------------
@@ -240,7 +235,7 @@ namespace CopsNRobbers
 
             }
             Console.ForegroundColor = ConsoleColor.White;
-
+            #region - Write info -
             Console.SetCursorPosition(165, stRow);
             Console.Write("Number of Citizens:  " + citizensTotal + "  ");
             Console.SetCursorPosition(165, stRow + 1);
@@ -326,140 +321,29 @@ namespace CopsNRobbers
                 Console.Write("+");
             }
 
-            Console.SetCursorPosition(165, stRow + 14);
-            Console.Write("");
             Console.SetCursorPosition(165, stRow + 15);
             Console.Write("1: Add Citizen");
             Console.SetCursorPosition(165, stRow + 16);
-            Console.Write("2: Remove Citizen");
+            Console.Write("2: Add Thief");
             Console.SetCursorPosition(165, stRow + 17);
-            Console.Write("");
+            Console.Write("3: Add Police");
             Console.SetCursorPosition(165, stRow + 18);
-            Console.Write("3: Add Thief");
-            Console.SetCursorPosition(165, stRow + 19);
-            Console.Write("4: Remove Thief");
-            Console.SetCursorPosition(165, stRow + 20);
             Console.Write("");
+            Console.SetCursorPosition(165, stRow + 19);
+            Console.Write("5: Remove Citizen");
+            Console.SetCursorPosition(165, stRow + 20);
+            Console.Write("6: Remove Thief");
             Console.SetCursorPosition(165, stRow + 21);
-            Console.Write("5: Add Police");
-            Console.SetCursorPosition(165, stRow + 22);
-            Console.Write("6: Remove Police");
+            Console.Write("7: Remove Police");
 
-
-            Console.SetCursorPosition(165, stRow + 24);
+            Console.SetCursorPosition(165, stRow + 23);
             Console.Write("Sentence Per Item " + sentencePerItem + " sec  ");
+            Console.SetCursorPosition(165, stRow + 24);
+            Console.Write("9. Lower Sentence");
             Console.SetCursorPosition(165, stRow + 25);
-            Console.Write("7. Lower Sentence");
-            Console.SetCursorPosition(165, stRow + 26);
-            Console.Write("8. Raise Sentence");
-
+            Console.Write("0. Raise Sentence");
+            #endregion
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //public void Meeting(Person person, Person otherPerson, List<Person> people)
-        //{
-        //    bool SamePlace = person.YPos == otherPerson.YPos && person.XPos == otherPerson.XPos;
-
-        //    // Thiefy()
-        //    if (person is Thief && otherPerson is Citizen || person is Citizen && otherPerson is Thief && SamePlace)
-        //    {
-        //        Thiefy((Thief)person, (Citizen)otherPerson);
-        //    }
-
-        //    // Arrest()
-        //    if (person is Police && otherPerson is Thief || person is Thief && otherPerson is Police && SamePlace)
-        //    {
-        //        Arrest((Police)person, (Thief)otherPerson, people);
-        //    }
-        //}
-
-        //Events
-        //Metod för rån
-        //public void Thiefy(Thief thief, Citizen citizen)
-        //{
-        //    Console.Write("\aEn tjuv smyger upp bakom en medborgare...");
-        //    Thread.Sleep(2000);
-
-        //    if (citizen.Belongings.Count > 0)
-        //    {
-        //        RobbedNumber++;
-
-        //        //TEST från subklassen Thief
-        //        Random random = new();
-        //        int removeAtIndex = random.Next(citizen.Belongings.Count - 1);
-
-        //        // Lägg till det valda föremålet i tjuvens "stolen" lista (tjuven stjäl föremålet).
-        //        thief.Stolen.Add(citizen.Belongings[removeAtIndex]);
-
-        //        // Ta bort det stulna föremålet från medborgarens "Belongings" lista (medborgaren förlorar föremålet).
-        //        citizen.Belongings.RemoveAt(removeAtIndex);
-
-        //        // Pausa i 2 sekunder (2000 millisekunder).
-        //        Thread.Sleep(2000);
-        //        string action = EventCards.Thiefy;
-        //    }
-        //    else
-        //    {
-        //        Console.Write("\aMedborgarens fickor var tomma, ingen stöds genomfördes.");
-        //        Thread.Sleep(2000);
-        //    }
-        //}
-
-        //Metod för att hantera arrest
-        //public void Arrest(Police police, Thief thief, List<Person> people)
-        //{
-        //    // Skriver ut ett meddelande om att polisen stannar och undersöker en tjuv.
-        //    Console.Write("\aPolisen stannar och undersöker en tjuv...");
-        //    Thread.Sleep(2000);
-
-        //    // Kontrollerar om tjuven har stulit något.
-        //    if (thief.Stolen.Count > 0)
-        //    {
-        //        // Ökar räknaren för antalet arresterade tjuvar.
-        //        ArrestedNumber++;
-
-        //        // Lägg till de stulna föremålen i polisens "Arrest" lista (konfiskering).
-        //        police.Confiscated.AddRange(thief.Stolen);
-
-        //        // Rensa tjuvens "stolen" lista (tjuven förlorar sina stulna föremål).
-        //        thief.Stolen.Clear();
-
-        //        // Markera tjuven som arresterad genom att sätta IsArrested till true.
-        //        thief.IsArrested = true;
-
-        //        // Tilldelar en händelse (action) från EventCards
-        //        string action = EventCards.Thiefy;
-        //        Thread.Sleep(2000);
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("Tjuven hade inte stulit något.");
-        //        Thread.Sleep(2000);
-        //    }
-        //}
-
-        //Skriva ut sammanfattning för tagna tjuvar och rånade medborgare i staden.
 
     }
 }

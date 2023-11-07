@@ -8,6 +8,32 @@ namespace CopsNRobbers
 {
     public class Splash
     {
+        public static void SplashScreen(int posX, int posY)
+        {
+            Console.SetWindowSize(140, 45);
+            Console.SetBufferSize(140, 45);
+            Console.CursorVisible = false;
+            Console.ReadKey();
+            Console.Clear();
+            Welcome(17, 2, 250, 8);
+            Thread.Sleep(300);
+            SinCityBWSunset(posX, posY);
+            Thread.Sleep(200);
+            Welcome(17, 2, 80, 3);
+            Thread.Sleep(1000);
+            SinCitySunSet(posX, posY);
+            SinCityBackdrop(posX, posY);
+            SinCitySunSetWater(posX, posY + 20, 0, "DarkYellow");
+            Thread.Sleep(1000);
+            SinCityLogo(posX - 4, posY + 1, 0, 0);
+            SinCityLogo(posX - 3, posY, 0, 0);
+            SinCityLogo(posX - 5, posY, 50, 4);
+            Thread.Sleep(100);
+            SinCitySunSetWater(posX, posY + 20, 10, "DarkRed");
+
+            Thread.Sleep(3000);
+            Console.Clear();
+        }
         public static int SelectMap()
         {
             int mapSelect = 0;
@@ -101,9 +127,16 @@ namespace CopsNRobbers
             Console.Write("███████▓▓▓▓▒▓▒▒▒░▒░▒░▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒░░░▒▒▒▒▒▓▒▓█▓███████"); // 4
 
         }
-        public static void SinCitySunSetWater(int posX, int posY, int sleep)
+        public static void SinCitySunSetWater(int posX, int posY, int sleep, string color)
         {
-            Console.ForegroundColor = ConsoleColor.DarkRed;
+            if (color == "DarkYellow")
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+            }
             Console.BackgroundColor = ConsoleColor.Black;
 
             Thread.Sleep(sleep);
@@ -469,7 +502,6 @@ namespace CopsNRobbers
             Console.Write("▓▓█▓▒▒▒▒▓▓▓");//1
             Thread.Sleep(sleep);
 
-
             Console.SetCursorPosition(posX + 6, posY + 2);
             Console.Write("▓██▒▒");
             Console.SetCursorPosition(posX + 17, posY + 2);
@@ -484,7 +516,6 @@ namespace CopsNRobbers
             Console.Write("▓▓▓");//2
             Thread.Sleep(sleep);
 
-
             Console.SetCursorPosition(posX + 5, posY + 3);
             Console.Write("▓██▒");
             Console.SetCursorPosition(posX + 56, posY + 3);
@@ -495,7 +526,6 @@ namespace CopsNRobbers
             Console.Write("▓█▓▒");//3
             Thread.Sleep(sleep);
 
-
             Console.SetCursorPosition(posX + 5, posY + 4);
             Console.Write("▓██▒");
             Console.SetCursorPosition(posX + 56, posY + 4);
@@ -505,7 +535,6 @@ namespace CopsNRobbers
             Console.SetCursorPosition(posX + 105, posY + 4);
             Console.Write("▓██▓▒");//4
             Thread.Sleep(sleep);
-
 
             Console.SetCursorPosition(posX + 6, posY + 5);
             Console.Write("▓██▒");
@@ -522,7 +551,6 @@ namespace CopsNRobbers
             Console.SetCursorPosition(posX + 105, posY + 5);
             Console.Write("▓█▓▒");//5
             Thread.Sleep(sleep);
-
 
             Console.SetCursorPosition(posX + 7, posY + 6);
             Console.Write("▓▓█▓▓▓▓▓▓▓");
@@ -544,7 +572,6 @@ namespace CopsNRobbers
             Console.Write("▓█▓▒");//6
             Thread.Sleep(sleep);
 
-
             Console.SetCursorPosition(posX + 9, posY + 7);
             Console.Write("▒▒▒▒▓███▓▓▓▓▓");
             Console.SetCursorPosition(posX + 28, posY + 7);
@@ -562,7 +589,6 @@ namespace CopsNRobbers
             Console.SetCursorPosition(posX + 103, posY + 7);
             Console.Write("▓▓▒");//7
             Thread.Sleep(sleep);
-
 
             Console.SetCursorPosition(posX + 14, posY + 8);
             Console.Write("▒▒▒▒▓██▓▒");
@@ -584,7 +610,6 @@ namespace CopsNRobbers
             Console.Write("▓▓▒");//8
             Thread.Sleep(sleep);
 
-
             Console.SetCursorPosition(posX + 18, posY + 9);
             Console.Write("▓███▓▒");
             Console.SetCursorPosition(posX + 29, posY + 9);
@@ -602,7 +627,6 @@ namespace CopsNRobbers
             Console.SetCursorPosition(posX + 97, posY + 9);
             Console.Write("▓████▓▒");//9
             Thread.Sleep(sleep);
-
 
             Console.SetCursorPosition(posX + 18, posY + 10);
             Console.Write("▓████▒");
@@ -622,7 +646,6 @@ namespace CopsNRobbers
             Console.Write("███▒");//0
             Thread.Sleep(sleep);
 
-
             Console.SetCursorPosition(posX + 18, posY + 11);
             Console.Write("▓████▓▒");
             Console.SetCursorPosition(posX + 29, posY + 11);
@@ -640,7 +663,6 @@ namespace CopsNRobbers
             Console.SetCursorPosition(posX + 99, posY + 11);
             Console.Write("▓██▒");//1
             Thread.Sleep(sleep);
-
 
             Console.SetCursorPosition(posX + 2, posY + 12);
             Console.Write("▓▓▓▓▓▓▓▓");
@@ -662,7 +684,6 @@ namespace CopsNRobbers
             Console.Write("▓█▒");//2
             Thread.Sleep(sleep);
 
-
             Console.SetCursorPosition(posX + 1, posY + 13);
             Console.Write("▓█▒▒");
             Console.SetCursorPosition(posX + 7, posY + 13);
@@ -680,7 +701,6 @@ namespace CopsNRobbers
             Console.SetCursorPosition(posX + 100, posY + 13);
             Console.Write("▓█▒");//3
             Thread.Sleep(sleep);
-
 
             Console.SetCursorPosition(posX + 1, posY + 14);
             Console.Write("▓");
@@ -701,7 +721,6 @@ namespace CopsNRobbers
             Console.SetCursorPosition(posX + 99, posY + 14);
             Console.Write("▓█▓▒");//4
             Thread.Sleep(sleep);
-
 
             Console.SetCursorPosition(posX, posY + 15);
             Console.Write("▓");
@@ -747,29 +766,21 @@ namespace CopsNRobbers
             Console.Write("▓▒");
             Thread.Sleep(sleep);
 
-
             Console.SetCursorPosition(posX + 99, posY + 19);
             Console.Write("▓▒");//9
             Thread.Sleep(sleep);
-
 
             Console.SetCursorPosition(posX + 99, posY + 20);
             Console.Write("▓");//0
             Thread.Sleep(sleep);
 
-
             Console.SetCursorPosition(posX + 99, posY + 21);
             Console.Write("▓");//1
             Thread.Sleep(sleep);
 
-
             Console.SetCursorPosition(posX + 99, posY + 22);
             Console.Write("▓");//2
             Thread.Sleep(sleep);
-
-
-
-
         }
         public static void SinCityBWSunset(int posX, int posY)
         {
@@ -809,33 +820,6 @@ namespace CopsNRobbers
             Console.Write("▒▒▒▒▒▒▒░░░▒▒▒▒▒▒▒  ░░░░░░░░░░▒▒▒▒  ░▒░▒▒▒▒▓▒▒▒  ▒▒▒▒▒▒▒░▒▒▒▒▒▒▒  ▒▒▒▒▒▒█▒▒░░ ░░░░░░▒▒▒▒▒░▒▒▒▒▒▒▒ ");
             Console.SetCursorPosition(posX, posY + 17);
             Console.Write("▒██▒▒█▒░▒░▒▓▒▒▒▓▒  ░░░░█░░░█░▒▒▒▒  ░░░░▒▒▒▒▒▒▒  ▒▒▒▒██▒░▒▓▓▒▒▒▒  ▒▒▒▒▒▒▒▒▒░░ ░█░░█░▒▒▒▓▒░▒▓▒▒▒▓▒ ");
-            //Console.SetCursorPosition(posX, posY + 18);
-            //Console.Write("                                                                                                 ");
-            //Console.SetCursorPosition(posX, posY + 19);
-            //Console.Write("                                                                                                 ");
-            //Console.SetCursorPosition(posX, posY + 20);
-            //Console.Write("░                 █░            ░▒█░▒        ░▒█▒              █           ▒█                   ░");
-            //Console.SetCursorPosition(posX, posY + 21);
-            //Console.Write("                 ░▒█▒▒         ░ █▒▒░░      ▒ ▒░           ░▓▒░ ▒░           ▓                   ");
-            //Console.SetCursorPosition(posX, posY + 22);
-            //Console.Write("     ░         ▓                ▒ ▒▒ ▒          ▓             ▓   ▒▒      ▒█  ░ ░                ");
-            //Console.SetCursorPosition(posX, posY + 23);
-            //Console.Write("             ▒ ▒ ▒░▓░▒░░       ░ ░ ░       ▒▒░▓▒▓▒░          ░▓▒░▒▓      ░ ░▓  ░        ▒        ");
-            //Console.SetCursorPosition(posX, posY + 24);
-            //Console.Write("              ▒▓█░      ░▒▓░░ ░    ▓░ ░   ▒█ ░    ▓     ░▓▒░               ▓                     ");
-            //Console.SetCursorPosition(posX, posY + 25);
-            //Console.Write("  ░      ░░   ▓    ░▒ ░        █ ▒▒░          ▒█░▒ ░░          ▒  ░▓░ ░    ▒  ▓   ░░░            ");
-            //Console.SetCursorPosition(posX, posY + 26);
-            //Console.Write("      ░░    ░░░█   ▓               █▓               ▒ ▒     ▓   ██               █    ░          ");
-            //Console.SetCursorPosition(posX, posY + 27);
-            //Console.Write("        ░        █    ░░░      ▓        ░▒░    ░█▒▒  ░   ▒▒▒░░██ ▒░ █      ░░▒▒░ █         ░░    ");
-            //Console.SetCursorPosition(posX, posY + 28);
-            //Console.Write("     ░       █           █       ██▓          ██                █    █  █      █       ░░        ");
-            //Console.SetCursorPosition(posX, posY + 29);
-            //Console.Write("        ░         █     █       ░░░  ██      ░░░█     ███░░  ░░░ ░░░  ░░    ██     █      ░      ");
-            //Console.SetCursorPosition(posX, posY + 30);
-            //Console.Write("             ░             ░░            ░        ░░      ░░              ░           ░          ");
-
         }
     }
 }

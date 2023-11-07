@@ -15,7 +15,6 @@ namespace CopsNRobbers
         public string Direction { get; set; }
         public virtual string Symbol { get; }
         public string Name { get; set; }
-
         public Person(int xPos, int yPos, int dPos, string direction, string name)
         {
             XPos = xPos;
@@ -24,21 +23,17 @@ namespace CopsNRobbers
             Direction = direction;
             Symbol = "X";
             Name = name;
-
-            //Inventory = new List<string>();
-
         }
-
         public static string[,,] CheckCollision(string[,,] cityMap, Person person)
         {
             if (cityMap[person.YPos, person.XPos, 1] != " ")
             {
-                // Met robber
+                // Met robber on layer 1
             }
 
             if (cityMap[person.YPos, person.XPos, 0] != " ")
             {
-                // Met police
+                // Met police on layer 0
             }
 
 
@@ -46,12 +41,9 @@ namespace CopsNRobbers
         }
         public static string[,,] MovePeeps(string[,,] cityMap, List<Person> personsList, bool pacMan)
         {
-            int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
-            int topStartCentered = (Console.WindowHeight / 2) - (cityMap.GetLength(0) / 2);
             foreach (Citizen person in personsList.OfType<Citizen>())
             {
                 cityMap = MoveDirection(cityMap, person, pacMan);
-
             }
             foreach (Thief person in personsList.OfType<Thief>())
             {
@@ -61,7 +53,6 @@ namespace CopsNRobbers
             {
                 cityMap = MoveDirection(cityMap, person, pacMan);
             }
-
             return cityMap;
         }
         public static string[,,] MoveDirection(string[,,] cityMap, Person person, bool pacMan)
@@ -84,8 +75,7 @@ namespace CopsNRobbers
             }
 
             bool okDir = false;
-            //int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
-            // int topStartCentered = (Console.WindowHeight / 2) - (cityMap.GetLength(0) / 2);
+
             switch (person.Direction)
             {
                 case "N":
@@ -238,9 +228,7 @@ namespace CopsNRobbers
         public static string[,,] ClearPerson(string[,,] cityMap, Person person)
         {
             int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
-
             int topStartCentered = 7;
-
             cityMap[person.YPos, person.XPos, person.DPos] = " ";
             Console.SetCursorPosition(person.XPos + leftStartCentered, person.YPos + topStartCentered);
             Console.Write(" ");
@@ -249,9 +237,7 @@ namespace CopsNRobbers
         public static string[,,] PlacePerson(string[,,] cityMap, Person person)
         {
             int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
-
             int topStartCentered = 7;
-
             cityMap[person.YPos, person.XPos, person.DPos] = person.Symbol;
             Console.SetCursorPosition(person.XPos + leftStartCentered, person.YPos + topStartCentered);
             Console.Write(person.Symbol);
@@ -348,99 +334,6 @@ namespace CopsNRobbers
             }
             return okDir;
         }
-        //public static bool CheckDirectionBackupOnlyBoundary(string[,,] cityMap, Person person, bool okDir)
-        //{
-        //    //    switch (person.Direction)
-        //    //    {
-        //    //        case "N":
-        //    //            if (person.YPos >= 1)
-        //    //            {
-        //    //                okDir = true;
-        //    //            }
-        //    //            else
-        //    //            {
-
-        //    //                okDir = false;
-        //    //            }
-        //    //            break; // OK
-        //    //        case "S":
-        //    //            if (cityMap[person.YPos + 1, person.XPos, cityMap.GetLength(2) - 1] == " ")
-        //    //            {
-        //    //                okDir = true;
-        //    //            }
-        //    //            else
-        //    //            {
-        //    //                okDir = false;
-        //    //            }
-        //    //            break; // OK
-        //    //        case "E":
-        //    //            if (cityMap[person.YPos, person.XPos + 1, cityMap.GetLength(2) - 1] == " ")
-        //    //            {
-        //    //                okDir = true;
-        //    //            }
-        //    //            else
-        //    //            {
-        //    //                okDir = false;
-        //    //            }
-        //    //            break; // OK
-        //    //        case "W":
-        //    //            if (person.XPos >= 1)
-        //    //            {
-        //    //                okDir = true;
-        //    //            }
-        //    //            else
-        //    //            {
-        //    //                okDir = false;
-        //    //            }
-        //    //            break; // OK
-
-        //    //        case "NE":
-        //    //            if ((person.YPos >= 1) && (person.XPos <= cityMap.GetLength(1) - 2))
-        //    //            {
-        //    //                okDir = true;
-        //    //            }
-        //    //            else
-        //    //            {
-        //    //                okDir = false;
-        //    //            }
-        //    //            break;
-        //    //        case "SE":
-        //    //            if ((person.YPos <= cityMap.GetLength(0) - 2) && (person.XPos <= cityMap.GetLength(1) - 2))
-        //    //            {
-        //    //                okDir = true;
-        //    //            }
-        //    //            else
-        //    //            {
-        //    //                okDir = false;
-        //    //            }
-        //    //            break;
-        //    //        case "NW":
-        //    //            if ((person.YPos >= 1) && (person.XPos >= 1))
-        //    //            {
-        //    //                okDir = true;
-        //    //            }
-        //    //            else
-        //    //            {
-        //    //                okDir = false;
-        //    //            }
-        //    //            break;
-        //    //        case "SW":
-        //    //            if ((person.YPos <= cityMap.GetLength(0) - 2) && (person.XPos >= 1))
-        //    //            {
-        //    //                okDir = true;
-        //    //            }
-        //    //            else
-        //    //            {
-        //    //                okDir = false;
-        //    //            }
-        //    //            break;
-
-
-        //    //        default:
-        //    //            break;
-        //    //    }
-        //    return okDir;
-        //}
         public static string[,,] ChangeDirection(string[,,] cityMap, Person person, bool pacMan)
         {
             //bool pacMan = true;
@@ -524,8 +417,6 @@ namespace CopsNRobbers
             int prisonSouth = 38;
             int prisonEast = 20;
             int prisonWest = 1;
-            // int cityWidth = 102;
-            // int cityHeight = 40;
             switch (person.Direction)
             {
                 case "N":
@@ -1020,7 +911,6 @@ namespace CopsNRobbers
             }
             return cityMap;
         } // Set pacMan to toggle bounce-style or Pac Man-teleport
-
         public static string DirectionStr()
         {
             Random rnd = new Random();

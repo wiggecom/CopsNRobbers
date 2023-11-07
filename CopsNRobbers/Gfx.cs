@@ -510,86 +510,30 @@ namespace CopsNRobbers
             Console.ForegroundColor = ConsoleColor.White;
 
         }
-        public static void SplashScreen(int posX, int posY)
-        {
-            Console.SetWindowSize(140, 45);
-            Console.SetBufferSize(140, 45);
-            Console.CursorVisible = false;
-            Console.ReadKey();
-            Console.Clear();
-            Splash.Welcome(17, 2, 250, 8);
-            Thread.Sleep(300);
-            Splash.SinCityBWSunset(posX, posY);
-            Thread.Sleep(200);
-            Splash.Welcome(17, 2, 80, 3);
-            Thread.Sleep(1000);
-            Splash.SinCitySunSet(posX, posY);
-            Splash.SinCityBackdrop(posX, posY);
-            Thread.Sleep(1000);
-            Splash.SinCityLogo(posX - 4, posY + 1, 0, 0);
-            Splash.SinCityLogo(posX - 3, posY , 0, 0);
-            Splash.SinCityLogo(posX - 5, posY, 50, 4);
-            Thread.Sleep(100);
-            Splash.SinCitySunSetWater(posX, posY + 20, 10);
-
-            Thread.Sleep(3000);
-            Console.Clear();
-        }
-
-        // ☺ ☻ ♥ ♦ ♣ ♠ • ◘ ○ ◙ ♂ ♀ ♪ ♫ ☼ ► ◄ ↕ ‼ ¶ § ▬ ↨ ↑ ↓
-        // → ← ∟ ↔ ▲ ▼ ^ ` ⌂ Ü ü º¿¡ ⌐ ¬ ª ® © « » ░ ▒ ▓ █ ▄ ▌▐ ▀
-        // │ ┤ ╡ ╢ ╖ ╕ ╣ ║ ╗ ╝ ╜ ╛ ┐ └ ┴ ├ ├ ─ ┼ ╞
-        //  ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧ ╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ┘ ┌
-        // - _ / | \
-        //
-        // DrawHotkeysFrame
-
-        // Console.Write("0         1         2         3         4         5       ");
-        // Console.Write("0123456789012345678901234567890123456789012345678901234567");
-        // Console.Write("1                                                         ");
-        // Console.Write("2                                                         ");
-        // Console.Write("3                                                         ");
-        // Console.Write("4                                                         ");
-        // Console.Write("5                                                         ");
-        // Console.Write("6                                                         ");
-        // Console.Write("7                                                         ");
-        // Console.Write("8                                                         ");
-        // Console.Write("9                                                         ");
-        // Console.Write("10                                                        ");
-        // Console.Write("11                                                        ");
-        /*
-
-
-
-         */
-        //while (true) // Gfx display loop
+        //public static void SplashScreen(int posX, int posY)
         //{
-        //    // Single color graphics
-        //Gfx.DrawRobberySingleCol();
-        //Console.WriteLine();
-        //Gfx.DrawBustedSingleCol();
-        //Console.WriteLine();
-        //Console.ReadKey();
+        //    Console.SetWindowSize(140, 45);
+        //    Console.SetBufferSize(140, 45);
+        //    Console.CursorVisible = false;
+        //    Console.ReadKey();
+        //    Console.Clear();
+        //    Splash.Welcome(17, 2, 250, 8);
+        //    Thread.Sleep(300);
+        //    Splash.SinCityBWSunset(posX, posY);
+        //    Thread.Sleep(200);
+        //    Splash.Welcome(17, 2, 80, 3);
+        //    Thread.Sleep(1000);
+        //    Splash.SinCitySunSet(posX, posY);
+        //    Splash.SinCityBackdrop(posX, posY);
+        //    Thread.Sleep(1000);
+        //    Splash.SinCityLogo(posX - 4, posY + 1, 0, 0);
+        //    Splash.SinCityLogo(posX - 3, posY , 0, 0);
+        //    Splash.SinCityLogo(posX - 5, posY, 50, 4);
+        //    Thread.Sleep(100);
+        //    Splash.SinCitySunSetWater(posX, posY + 20, 10);
 
-        // Dual color graphics
-        //Console.Clear();
-        //Gfx.DrawRobbery();
-        //Console.WriteLine();
-        //Gfx.DrawBusted();
-        //Console.WriteLine();
-        //Console.ReadKey();
+        //    Thread.Sleep(3000);
+        //    Console.Clear();
         //}
-        /*
-          
-Console.WriteLine("░░░   ▒▒▒▒       ▒▒▒▒ ░░░░     ▒▒▒▒  ▒▒▒▒    ░░░   ▓▓▓▓   ░░░░░  ▒▒▒▒      ▓▓▓▓      ░░");
-Console.WriteLine("░▒▒▒▒ ▒▓▒███ ░░██▒▓▒▓▓ ▓▓▓▓▓ ▓▓ ▓▓  ▓▓ ░  ▓▓▓▓ ▓▓ ▓▓▓▓▓▓ ▓▓ ░░ ▓▓ ▒▓▓▓░░░░ █▓█▓  ▒▒███░");
-Console.WriteLine("▓▓▓▒▓ ▒▒▒█▓█▓▓░██▒▒▓▓█ ██    ██ ███ ██ ░ ██    ██   ██  ░ ██  ██ ░▒▓█▓▒░▒▒▒▓▓▓▓░░▒▓█▓█░");
-Console.WriteLine("▓█▓▒███▓▒███▓█▒███▒▓█▓  ▓▓▓  ▓▓ ▓▓▓▓▓▓ ░ ▓▓ ░░ ▓▓ ░ ▓▓ ░▓░ ▓▓▓▓ ░▒▒▓▓▓░░▒███▓█▓▒░▒▒███░");
-Console.WriteLine("▓▓▓▒█▓█▒▒█▓█▓▓▒███▒▓▓█░   ▒▒ ▒▒ ▒▒ ▒▒▒ ░ ▒▒    ▒▒ ░ ▒▒ ░▓▓░ ▒▒ ░░▒▒▓█▓▒░▒█▓█▓▓▓░░▒▓█▓█░");
-Console.WriteLine("▓▓▓▒███▒▒███▓▓▒███▒▓▓█ ░░░░░ ░░ ░░  ░░ ░░ ░░░░ ░░ ░ ░░ ░▓▓░ ░░ ░░▒▒▓▓▓░░▒███▓▓▓░░▒▒███░");
-
-
-
-         */
     }
 }
