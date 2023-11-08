@@ -510,30 +510,5 @@ namespace CopsNRobbers
             Console.ForegroundColor = ConsoleColor.White;
 
         }
-        //public static void SplashScreen(int posX, int posY)
-        //{
-        //    Console.SetWindowSize(140, 45);
-        //    Console.SetBufferSize(140, 45);
-        //    Console.CursorVisible = false;
-        //    Console.ReadKey();
-        //    Console.Clear();
-        //    Splash.Welcome(17, 2, 250, 8);
-        //    Thread.Sleep(300);
-        //    Splash.SinCityBWSunset(posX, posY);
-        //    Thread.Sleep(200);
-        //    Splash.Welcome(17, 2, 80, 3);
-        //    Thread.Sleep(1000);
-        //    Splash.SinCitySunSet(posX, posY);
-        //    Splash.SinCityBackdrop(posX, posY);
-        //    Thread.Sleep(1000);
-        //    Splash.SinCityLogo(posX - 4, posY + 1, 0, 0);
-        //    Splash.SinCityLogo(posX - 3, posY , 0, 0);
-        //    Splash.SinCityLogo(posX - 5, posY, 50, 4);
-        //    Thread.Sleep(100);
-        //    Splash.SinCitySunSetWater(posX, posY + 20, 10);
-
-        //    Thread.Sleep(3000);
-        //    Console.Clear();
-        //}
     }
 }

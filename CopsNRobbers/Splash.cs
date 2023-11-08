@@ -83,6 +83,7 @@ namespace CopsNRobbers
                     mapSelect = 3;
                     break;
                 default:
+                    mapSelect = 1;
                     break;
             }
             Console.Clear();

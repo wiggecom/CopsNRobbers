@@ -37,7 +37,7 @@ namespace CopsNRobbers
             // int cityTopStartCentered = (Console.WindowHeight / 2) - (cityHeight / 2);
             int cityTopStartCentered = 7; // - Fixed location due to features -
 
-            Gfx.DrawSinCity(cityTopStartCentered);
+            Gfx.DrawSinCity(cityTopStartCentered); // Draw entire map, all layers
             City sinCity = new City(cityWidth, cityHeight, cityDepth);
             string[,,] cityMap = sinCity.MakeCity(sinCity);
             cityMap = sinCity.FillCity(cityMap);

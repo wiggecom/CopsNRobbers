@@ -1,5 +1,0 @@
-﻿Randomizer, skapa karaktärer (med roliga namn och / eller epitet)
-
-prop strength, om två tjuvar kolliderar && differansen av styrka är större än 50 blir den svaga rånad
-
-w

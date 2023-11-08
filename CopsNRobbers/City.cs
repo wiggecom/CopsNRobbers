@@ -366,57 +366,57 @@ namespace CopsNRobbers
 
             return cityArray;
         }
-        public static string[,,] PutPrisonOnLayer(int mapSizeY, int mapSizeX, int mapDepth, string[,,] prisonArray)
-        {
-            // 
-            string mapLayer00 = ""; string mapLayer01 = ""; string mapLayer02 = ""; string mapLayer03 = ""; string mapLayer04 = ""; string mapLayer05 = ""; 
-            string mapLayer06 = ""; string mapLayer07 = ""; string mapLayer08 = ""; string mapLayer09 = "";
-            //
+        //public static string[,,] PutPrisonOnLayer(int mapSizeY, int mapSizeX, int mapDepth, string[,,] prisonArray)
+        //{
+        //    // 
+        //    string mapLayer00 = ""; string mapLayer01 = ""; string mapLayer02 = ""; string mapLayer03 = ""; string mapLayer04 = ""; string mapLayer05 = ""; 
+        //    string mapLayer06 = ""; string mapLayer07 = ""; string mapLayer08 = ""; string mapLayer09 = "";
+        //    //
 
-            int prisonFilled = 0;
+        //    int prisonFilled = 0;
 
-            if (prisonFilled == 0)
-            {
-                //           "123456789012345"
-                mapLayer00 = "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"; // 00
-                mapLayer01 = "▒             ▒"; // 01
-                mapLayer02 = "▒             ▒"; // 02
-                mapLayer03 = "▒             ▒"; // 03
-                mapLayer04 = "▒             ▒"; // 04
-                mapLayer05 = "▒             ▒"; // 05
-                mapLayer06 = "▒             ▒"; // 06
-                mapLayer07 = "▒             ▒"; // 07
-                mapLayer08 = "▒             ▒"; // 08
-                mapLayer09 = "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"; // 26
-            }
-            if (prisonFilled == 2)
-            {
-            }
+        //    if (prisonFilled == 0)
+        //    {
+        //        //           "123456789012345"
+        //        mapLayer00 = "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"; // 00
+        //        mapLayer01 = "▒             ▒"; // 01
+        //        mapLayer02 = "▒             ▒"; // 02
+        //        mapLayer03 = "▒             ▒"; // 03
+        //        mapLayer04 = "▒             ▒"; // 04
+        //        mapLayer05 = "▒             ▒"; // 05
+        //        mapLayer06 = "▒             ▒"; // 06
+        //        mapLayer07 = "▒             ▒"; // 07
+        //        mapLayer08 = "▒             ▒"; // 08
+        //        mapLayer09 = "▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒"; // 26
+        //    }
+        //    if (prisonFilled == 2)
+        //    {
+        //    }
 
-            List<string> layerList = new List<string>();
-            layerList.Add(mapLayer00);
-            layerList.Add(mapLayer01);
-            layerList.Add(mapLayer02);
-            layerList.Add(mapLayer03);
-            layerList.Add(mapLayer04);
-            layerList.Add(mapLayer05);
-            layerList.Add(mapLayer06);
-            layerList.Add(mapLayer07);
-            layerList.Add(mapLayer08);
-            layerList.Add(mapLayer09);
+        //    List<string> layerList = new List<string>();
+        //    layerList.Add(mapLayer00);
+        //    layerList.Add(mapLayer01);
+        //    layerList.Add(mapLayer02);
+        //    layerList.Add(mapLayer03);
+        //    layerList.Add(mapLayer04);
+        //    layerList.Add(mapLayer05);
+        //    layerList.Add(mapLayer06);
+        //    layerList.Add(mapLayer07);
+        //    layerList.Add(mapLayer08);
+        //    layerList.Add(mapLayer09);
 
-            int j = 0;
-            foreach (var layer in layerList)
-            {
-                for (int i = 0; i < prisonArray.GetLength(1); i++)
-                {
-                    prisonArray[j, i, mapDepth - 1] = layer[i].ToString();
-                }
-                j++;
-            }
+        //    int j = 0;
+        //    foreach (var layer in layerList)
+        //    {
+        //        for (int i = 0; i < prisonArray.GetLength(1); i++)
+        //        {
+        //            prisonArray[j, i, mapDepth - 1] = layer[i].ToString();
+        //        }
+        //        j++;
+        //    }
 
-            return prisonArray;
-        } 
+        //    return prisonArray;
+        //} 
 
          
     }
