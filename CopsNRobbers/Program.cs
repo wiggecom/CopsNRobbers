@@ -27,7 +27,7 @@ namespace CopsNRobbers
             Events events = new Events();
             List<Person> personsList = new List<Person>();
 
-            //Splash.SplashScreen(20, 12);  // - SPLASH -
+            Splash.SplashScreen(20, 12);  // - SPLASH -
             Console.SetBufferSize((200), 50);
             Console.SetWindowSize((200), 50);
 
@@ -58,7 +58,7 @@ namespace CopsNRobbers
             }
             #endregion
             Gfx.CityFrame(cityWidth, cityHeight, cityLeft, cityTop); // Draw outer frame of city
-            //sinCity.DrawCity(cityMap, cityLeft, cityTop);
+            sinCity.DrawCity(cityMap, cityLeft, cityTop); // Draw levelmap
 
             #region Main Loop
             while (true)
