@@ -229,6 +229,8 @@ namespace CopsNRobbers
         {
             int leftStartCentered = (Console.WindowWidth / 2) - (cityMap.GetLength(1) / 2);
             int topStartCentered = 7;
+            //int mapXPos = leftStartCentered;
+            //int mapYPos = 7;
             cityMap[person.YPos, person.XPos, person.DPos] = " ";
             Console.SetCursorPosition(person.XPos + leftStartCentered, person.YPos + topStartCentered);
             Console.Write(" ");

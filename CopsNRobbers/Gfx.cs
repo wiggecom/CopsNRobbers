@@ -351,16 +351,22 @@ namespace CopsNRobbers
             Console.SetCursorPosition(startX, startY + 9);  // 6
             Console.Write("            ▒ ▒                                    ");
         }
-        public static void DrawSinCity(int cityTopStartCentered)
+        public static void CityFrame(int cityWidth, int cityHeight, int cityLeft, int cityTop)
         {
-            int posCenteredStartLeft = (Console.WindowWidth / 2) - 44;
+            DrawSinCity(cityTop);
+            CityOuterFrame(cityWidth, cityHeight, cityLeft, cityTop);
+            LocalPeeps();
+        }
+        public static void DrawSinCity(int cityTop)
+        {
+            int topperPosLeft = (Console.WindowWidth / 2) - 44;
             // 87 chars wide, 6 chars high (center - 44)
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.SetCursorPosition(posCenteredStartLeft, cityTopStartCentered  -7);
+            Console.SetCursorPosition(topperPosLeft, cityTop - 7);
             Console.Write("░░░   ▒▒▒▒       ▒▒▒▒ ░░░░     ▒▒▒▒  ▒▒▒▒    ░░░   ▓▓▓▓   ░░░░░  ▒▒▒▒      ▓▓▓▓      ░░░");
 
-            Console.SetCursorPosition(posCenteredStartLeft, cityTopStartCentered  -6);
+            Console.SetCursorPosition(topperPosLeft, cityTop - 6);
             Console.Write("░▒▒▒▒ ▒▓▒███ ░░██▒▓▒▓▓ ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("▓▓▓▓▓ ▓▓ ▓▓  ▓▓ ");
@@ -375,7 +381,7 @@ namespace CopsNRobbers
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write(" ▒▓▓▓░░░░ █▓█▓  ▒▒███░░");
 
-            Console.SetCursorPosition(posCenteredStartLeft, cityTopStartCentered  -5);
+            Console.SetCursorPosition(topperPosLeft, cityTop - 5);
             Console.Write("▓▓▓▒▓ ▒▒▒█▓█▓▓░██▒▒▓▓█ ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("██    ██ ███ ██ ");
@@ -390,7 +396,7 @@ namespace CopsNRobbers
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("░▒▓█▓▒░▒▒▒▓▓▓▓░░▒▓█▓█░░");
 
-            Console.SetCursorPosition(posCenteredStartLeft, cityTopStartCentered  -4);
+            Console.SetCursorPosition(topperPosLeft, cityTop - 4);
             Console.Write("▓█▓▒███▓▒███▓█▒███▒▓█▓  ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("▓▓▓  ▓▓ ▓▓▓▓▓▓ ");
@@ -413,7 +419,7 @@ namespace CopsNRobbers
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("░▒▒▓▓▓░░▒███▓█▓▒░▒▒███░░");
 
-            Console.SetCursorPosition(posCenteredStartLeft, cityTopStartCentered -3);
+            Console.SetCursorPosition(topperPosLeft, cityTop - 3);
             Console.Write("▓▓▓▒█▓█▒▒█▓█▓▓▒███▒▓▓█░   ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("▒▒ ▒▒ ▒▒ ▒▒▒ ");
@@ -432,7 +438,7 @@ namespace CopsNRobbers
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("░░▒▒▓█▓▒░▒█▓█▓▓▓░░▒▓█▓█░░");
 
-            Console.SetCursorPosition(posCenteredStartLeft, cityTopStartCentered - 2);
+            Console.SetCursorPosition(topperPosLeft, cityTop - 2);
             Console.Write("▓▓▓▒███▒▒███▓▓▒███▒▓▓█ ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("░░░░░ ░░ ░░  ░░ ");
@@ -451,8 +457,7 @@ namespace CopsNRobbers
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("░░▒▒▓▓▓░░▒███▓▓▓░░▒▒███░░");
         }
-
-        public static void CityFrame(int cityWidth, int cityHeight, int cityLeft, int cityTop)
+        public static void CityOuterFrame(int cityWidth, int cityHeight, int cityLeft, int cityTop)
         {
             // Topsection
             Console.SetCursorPosition(cityLeft - 1, cityTop - 1);
@@ -484,10 +489,6 @@ namespace CopsNRobbers
             }
             Console.SetCursorPosition(cityLeft + cityWidth, cityTop + cityHeight);
             Console.Write("╝");
-
-            //Console.WriteLine("╔ ═ ╗");
-            //Console.WriteLine("║   ║");
-            //Console.WriteLine("╚ ═ ╝");
         }
         public static void LocalPeeps()
         {

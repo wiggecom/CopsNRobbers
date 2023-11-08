@@ -15,7 +15,6 @@ namespace CopsNRobbers
         public int SentenceSecondsPerItem { get; set; }
         public DateTime LeavingPrison { get; set; }
 
-
         public Thief(int xPos, int yPos, int dPos, string direction, string name, int sentenceSecondsPerItem) : base(xPos, yPos, dPos, direction, name)
         {
             {

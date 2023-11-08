@@ -27,25 +27,16 @@ namespace CopsNRobbers
             Events events = new Events();
             List<Person> personsList = new List<Person>();
 
-            Splash.SplashScreen(20, 12);  // - SPLASH -
+            //Splash.SplashScreen(20, 12);  // - SPLASH -
             Console.SetBufferSize((200), 50);
             Console.SetWindowSize((200), 50);
 
-            int cityFilled = Splash.SelectMap(); //  <- Map Selector
-            int cityLeftStartCentered = (Console.WindowWidth / 2) - (cityWidth / 2);
-            
-            // int cityTopStartCentered = (Console.WindowHeight / 2) - (cityHeight / 2);
-            int cityTopStartCentered = 7; // - Fixed location due to features -
+            int citySelectedMap = Splash.SelectMap(); //  <- Map Selector
+            int cityLeft = (Console.WindowWidth / 2) - (cityWidth / 2);
+            int cityTop = 7;
 
-            Gfx.DrawSinCity(cityTopStartCentered); // Draw entire map, all layers
-            City sinCity = new City(cityWidth, cityHeight, cityDepth);
-            string[,,] cityMap = sinCity.MakeCity(sinCity);
-            cityMap = sinCity.FillCity(cityMap);
-            Gfx.LocalPeeps();
-            Gfx.CityFrame(cityWidth, cityHeight, cityLeftStartCentered, cityTopStartCentered);
-
-            cityMap = City.PutMapOnLayer(cityHeight, cityWidth, cityDepth, cityMap, cityFilled);
-
+            City sinCity = new City(cityWidth, cityHeight, cityDepth, cityLeft, cityTop);
+            string[,,] cityMap = sinCity.MakeCity(cityHeight, cityWidth, cityDepth, citySelectedMap, sinCity); // make graphics and insert selected map
             #region Make Base Actors
             for (int i = 0; i < citizensTotal; i++)
             {
@@ -66,8 +57,8 @@ namespace CopsNRobbers
                 personsList.Add(new Police(charPosX, charPosY, 0, Person.DirectionStr(), Police.PoliceName()));
             }
             #endregion
-            sinCity.DrawCity(cityMap, cityLeftStartCentered, cityTopStartCentered);
-
+            Gfx.CityFrame(cityWidth, cityHeight, cityLeft, cityTop); // Draw outer frame of city
+            //sinCity.DrawCity(cityMap, cityLeft, cityTop);
 
             #region Main Loop
             while (true)
@@ -86,7 +77,7 @@ namespace CopsNRobbers
 
                     }
                 }
-                Events.CitySummary(personsList, cityLeftStartCentered, cityTopStartCentered, sleepy, citizensTotal, thievesTotal, copsTotal, pacMan, sentencePerItem);
+                Events.CitySummary(personsList, cityLeft, cityTop, sleepy, citizensTotal, thievesTotal, copsTotal, pacMan, sentencePerItem);
 
                 #region Read Keys
                 if (Console.KeyAvailable)
